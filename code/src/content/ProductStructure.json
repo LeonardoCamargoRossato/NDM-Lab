@@ -18,7 +18,8 @@
         "te279-emblem-original",
         "te279-emblem-webp",
         "home-hero-original",
-        "home-hero-webp"
+        "home-hero-webp",
+        "webseer-cover-original"
       ],
       "status": "implemented"
     },
@@ -115,7 +116,10 @@
         "webseer-capa-9-webp",
         "webseer-capa-9-png",
         "webseer-capa-10-webp",
-        "webseer-capa-10-png"
+        "webseer-capa-10-png",
+        "webseer-brand-candidate-png",
+        "webseer-brand-candidate-webp",
+        "webseer-cover-original"
       ],
       "status": "implemented"
     },
@@ -130,7 +134,16 @@
       "parentId": "learn-more",
       "navigation": "dropdown",
       "component": "pages/template/TemplatePage.tsx",
-      "assets": [],
+      "assets": [
+        "lcr-logo-png",
+        "lcr-logo-webp",
+        "template-reference-home-png",
+        "template-reference-home-webp",
+        "template-reference-sidebar-png",
+        "template-reference-sidebar-webp",
+        "template-reference-learn-more-png",
+        "template-reference-learn-more-webp"
+      ],
       "status": "implemented"
     },
     {

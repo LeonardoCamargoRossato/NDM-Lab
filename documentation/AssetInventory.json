@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "assets": [
     {
       "asset_id": "ita-institutional-logo",
@@ -476,22 +476,276 @@
         "code/src/pages/home/HomePage.tsx"
       ],
       "status": "integrated"
+    },
+    {
+      "asset_id": "lcr-logo-png",
+      "description": "LcrLogo.png (original)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/branding/LcrLogo.png",
+      "source": "LCR Portfolio original, commit 4e2941bdc55c29349a012c682a6ccb228fc06a09",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "PNG",
+      "git_blob_sha": "66f0fd27b8d913680a6ae7d00c83feb3c61dd3b2",
+      "sha256": "ff94d4e058a8d4cff897a3d51a36597851d547d121c710fc6e8ea4befdcfcc1f",
+      "size_bytes": 1266998,
+      "dimensions": "1254 × 1254",
+      "original_path": "code/public/assets/branding/LcrLogo.png",
+      "optimized_path": "code/public/assets/branding/LcrLogo.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "lcr-logo-webp",
+      "description": "LcrLogo.png (optimized)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/branding/LcrLogo.webp",
+      "source": "LCR Portfolio original, commit 4e2941bdc55c29349a012c682a6ccb228fc06a09",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "WEBP",
+      "git_blob_sha": "4fb86f7bfaa7e649308224f5933fe1a4e1f9d5d1",
+      "sha256": "d4ab6d93b9ea703347d986de06f5ffcd78429185c44c7766eca963f4d00cdade",
+      "size_bytes": 888056,
+      "dimensions": "1254 × 1254",
+      "original_path": "code/public/assets/branding/LcrLogo.png",
+      "optimized_path": "code/public/assets/branding/LcrLogo.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "webseer-brand-candidate-png",
+      "description": "WebSeerBrandCandidate.png (original)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/branding/WebSeerBrandCandidate.png",
+      "source": "LCR Portfolio existing graph graphic; official logo unconfirmed",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "PNG",
+      "git_blob_sha": "f1804c08dc0433bf7d6fdfcd30a8a9f8c7449cd2",
+      "sha256": "71a9280b7d902f70c682286c8f3c332230641a440aef7c179ca78cec58465e16",
+      "size_bytes": 4157,
+      "dimensions": "640 × 420",
+      "original_path": "code/public/assets/branding/WebSeerBrandCandidate.png",
+      "optimized_path": "code/public/assets/branding/WebSeerBrandCandidate.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "webseer-brand-candidate-webp",
+      "description": "WebSeerBrandCandidate.png (optimized)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/branding/WebSeerBrandCandidate.webp",
+      "source": "LCR Portfolio existing graph graphic; official logo unconfirmed",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "WEBP",
+      "git_blob_sha": "a30812774b2942a09423112ec7ffeef76786d98a",
+      "sha256": "e0ca9faae2d32bc42944c1b5c7f516465736f1aeca499476851d5cc6fea02282",
+      "size_bytes": 1962,
+      "dimensions": "640 × 420",
+      "original_path": "code/public/assets/branding/WebSeerBrandCandidate.png",
+      "optimized_path": "code/public/assets/branding/WebSeerBrandCandidate.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "webseer-cover-original",
+      "description": "WebSeerCover.png (original)",
+      "pages": [
+        "home",
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/cover/WebSeerCover.png",
+      "source": "Original LCR Portfolio cover, commit 4e2941bdc55c29349a012c682a6ccb228fc06a09",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "PNG",
+      "git_blob_sha": "3cb5a3daec87178ff24e2e807cffb05d29b2815a",
+      "sha256": "c2bb5a46ede21c5e917ee904f67ba4fa27367a981b46cac3cc6a165dbcb647f3",
+      "size_bytes": 1074515,
+      "dimensions": "1672 × 941",
+      "original_path": "code/public/assets/webseer/cover/WebSeerCover.png",
+      "optimized_path": "code/public/assets/webseer/cover/WebSeerCover.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "template-reference-home-png",
+      "description": "ReferenceHome.png (original)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/template/screenshots/ReferenceHome.png",
+      "source": "Real published academic website screenshot; Actions run 46071432875",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "PNG",
+      "git_blob_sha": "ba3834bb9c433dd8c2124fe0bf3b26b8c85b6c6d",
+      "sha256": "fdb1b68e84477b31d2eb6c5e4dee07cce1f449a3edc5b58fe7f077b7ccf63b69",
+      "size_bytes": 518100,
+      "dimensions": "1440 × 1000",
+      "original_path": "code/public/assets/template/screenshots/ReferenceHome.png",
+      "optimized_path": "code/public/assets/template/screenshots/ReferenceHome.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "template-reference-home-webp",
+      "description": "ReferenceHome.png (optimized)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/template/screenshots/ReferenceHome.webp",
+      "source": "Real published academic website screenshot; Actions run 46071432875",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "WEBP",
+      "git_blob_sha": "045e28b56797a04faf47dd9ee0c97524e3105e48",
+      "sha256": "1eb4dab6ab85e3a3ec0c5d92db90f7ecdae68402efae2bcb0032559b7d1f895c",
+      "size_bytes": 68554,
+      "dimensions": "1440 × 1000",
+      "original_path": "code/public/assets/template/screenshots/ReferenceHome.png",
+      "optimized_path": "code/public/assets/template/screenshots/ReferenceHome.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "template-reference-sidebar-png",
+      "description": "ReferenceSidebar.png (original)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/template/screenshots/ReferenceSidebar.png",
+      "source": "Real expanded scientific sidebar screenshot; Actions run 46071432875",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "PNG",
+      "git_blob_sha": "0d7f2547b553e4b67c42d08ebe71a06c6435728c",
+      "sha256": "771b3982b2c9ad9967f2f68832b9ab8c9a76c628d4e1d69af89e77d8f70eb1f2",
+      "size_bytes": 473270,
+      "dimensions": "1440 × 1000",
+      "original_path": "code/public/assets/template/screenshots/ReferenceSidebar.png",
+      "optimized_path": "code/public/assets/template/screenshots/ReferenceSidebar.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "template-reference-sidebar-webp",
+      "description": "ReferenceSidebar.png (optimized)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/template/screenshots/ReferenceSidebar.webp",
+      "source": "Real expanded scientific sidebar screenshot; Actions run 46071432875",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "WEBP",
+      "git_blob_sha": "fec267843d7ff23e20d3598d9ce9307e83d4dab9",
+      "sha256": "18e608480c63537f2912ee5df0994d6e220897cba7b88978cfbc79044a833d6c",
+      "size_bytes": 52116,
+      "dimensions": "1440 × 1000",
+      "original_path": "code/public/assets/template/screenshots/ReferenceSidebar.png",
+      "optimized_path": "code/public/assets/template/screenshots/ReferenceSidebar.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "template-reference-learn-more-png",
+      "description": "ReferenceLearnMore.png (original)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/template/screenshots/ReferenceLearnMore.png",
+      "source": "Real published Saiba mais screenshot; Actions run 46071432875",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "PNG",
+      "git_blob_sha": "86af7c936fd4f8e1f1f49a875d8457d8b6ad324e",
+      "sha256": "27a8e1259304af831036aa3b4f9c701d6926b6143db7f406973a80d8aeeb2ae1",
+      "size_bytes": 422801,
+      "dimensions": "1440 × 3490",
+      "original_path": "code/public/assets/template/screenshots/ReferenceLearnMore.png",
+      "optimized_path": "code/public/assets/template/screenshots/ReferenceLearnMore.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
+    },
+    {
+      "asset_id": "template-reference-learn-more-webp",
+      "description": "ReferenceLearnMore.png (optimized)",
+      "pages": [
+        "template"
+      ],
+      "path": "code/public/assets/template/screenshots/ReferenceLearnMore.webp",
+      "source": "Real published Saiba mais screenshot; Actions run 46071432875",
+      "author": "Project owner / portfolio or published academic website",
+      "format": "WEBP",
+      "git_blob_sha": "d5c595863913f4b4a33868bbb32d369272eaaf3d",
+      "sha256": "e4d73b91c0f888abd284d80cc77f0d95047a32f0d6fdae1adc3e536c7217bda0",
+      "size_bytes": 255216,
+      "dimensions": "1440 × 3490",
+      "original_path": "code/public/assets/template/screenshots/ReferenceLearnMore.png",
+      "optimized_path": "code/public/assets/template/screenshots/ReferenceLearnMore.webp",
+      "rights": "Project owner authorized reuse; institutional identification is not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/content/ProductStructure.json"
+      ],
+      "status": "available; UI integration pending"
     }
   ],
   "pending": [
     {
       "id": "template-screenshots",
-      "status": "real screenshots pending",
+      "status": "files verified; UI gallery integration pending",
       "required": true
     },
     {
       "id": "lcr-webseer-marks",
-      "status": "original marks pending",
+      "status": "LCR original and WebSeer candidate available; official WebSeer identity unconfirmed; dropdown integration pending",
       "required": true
     },
     {
       "id": "webseer-cover-original",
-      "status": "source PNG remains in portfolio; connector returned empty content for this blob; do not overwrite original",
+      "status": "original verified; viewer integration pending",
       "required": true
     }
   ]
