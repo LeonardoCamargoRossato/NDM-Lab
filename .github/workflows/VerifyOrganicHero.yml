@@ -1,0 +1,57 @@
+name: Verify published organic Hero
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/VerifyOrganicHero.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: d72aa0d2c45ca9ff424252b339b53cf1c9cd4199
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - working-directory: code
+        run: npm ci && npx playwright install chromium
+      - working-directory: code
+        run: |
+          mkdir -p test-results/published
+          cat > VerifyHero.mjs <<'EOF'
+          import { chromium } from '@playwright/test';
+          import { createHash } from 'node:crypto';
+          import assert from 'node:assert/strict';
+          const base='https://leonardocamargorossato.github.io/NDM-Lab/';
+          const browser=await chromium.launch();
+          try {
+            const page=await browser.newPage({viewport:{width:1440,height:900}});
+            for(const [name,url] of [['normal',base],['fresh',base+'?v=d72aa0d']]){
+              const requests=[];
+              const listen=r=>{if(r.url().includes('HumanDecisionMakingHero'))requests.push(r.url())};
+              page.on('request',listen);
+              await page.goto(url,{waitUntil:'networkidle'});
+              const hero=page.locator('.decision-hero');
+              await hero.waitFor();
+              const info=await hero.evaluate(async img=>{await img.decode();return {src:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight}});
+              console.log('LIVE_HERO',name,JSON.stringify(info),JSON.stringify(requests));
+              await page.screenshot({path:'test-results/published/Home-'+name+'.png',fullPage:true});
+              await hero.screenshot({path:'test-results/published/Hero-'+name+'.png'});
+              const response=await page.request.get(info.src);
+              const hash=createHash('sha256').update(await response.body()).digest('hex');
+              console.log('LIVE_HASH',name,hash);
+              assert.ok(info.src.endsWith('HumanDecisionMakingHero.svg'));
+              assert.equal(hash,'285fcda0c5057815d0eeae1f67a10545e801c2fa553b7ce8fef4adcdbb67c8a0');
+              page.off('request',listen);
+            }
+          }finally{await browser.close()}
+          EOF
+          node VerifyHero.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: published-organic-hero
+          path: code/test-results/published
