@@ -102,6 +102,7 @@ test('Home fits actual viewport without clipping or scrolling, including short n
  const sizes=info.project.name==='1440x900'?[[1440,900],[1366,600],[1280,720],[1280,1024],[320,568],[360,640],[844,390],[568,320],[2560,1440]]:[null];
  for(const size of sizes){
   if(size)await page.setViewportSize({width:size[0],height:size[1]});
+  console.log('HOME_FIT_VIEWPORT',page.viewportSize());
   await expect(page.locator('.home-main')).toHaveAttribute('data-fit-relaxed','false');
   await expect(page.locator('.hero .eyebrow')).toHaveCount(0);
   await expect.poll(()=>page.evaluate(()=>{

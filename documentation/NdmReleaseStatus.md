@@ -15,3 +15,5 @@ Decision Landscape integration: approved uploaded PNG and WebP preserved byte-fo
 Organic Home Hero: exact Drawer SVG is now the active image; PNG and WebP predecessors are retained unchanged for rollback. The SVG is displayed as an external image element, at full opacity without border, clipping or background. Desktop right column enlarged; mobile retains intrinsic aspect ratio. Decision Landscape remains at 35%. Visual approval pending.
 
 Home viewport hotfix: removed research laboratory eyebrow; cards share a two-column row at approximately half previous width, maintaining 56/44 image/text desktop split and mobile image-above-copy. Home viewport shell measures its available content height and scales only if needed, with an accessibility escape for extreme/zoomed viewports. Other routes remain scrollable. No asset changes.
+
+Short mobile landscape uses a compact image-first card layout to preserve readable copy without triggering overflow (568 × 320).
