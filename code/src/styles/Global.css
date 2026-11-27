@@ -23,3 +23,8 @@
 /* Decision Landscape — independent full-bleed decorative layer. */
 .home-main{position:relative;isolation:isolate;background:#fff}.home-background{position:absolute;inset:0;z-index:-1;pointer-events:none;background-repeat:no-repeat;background-size:cover;background-position:var(--background-position,center);opacity:var(--background-opacity,.35);overflow:hidden}.home-main>.hero{position:relative;z-index:0}.home-main .hero-copy{position:relative}.home-main .rpd-link{border-radius:6px;background:rgb(255 255 255 / .8)}
 @media(max-width:800px){.home-background{background-position:var(--background-mobile-position,center)}}
+
+/* Organic Hero: preserve the approved SVG's intrinsic aspect ratio and transparent silhouette. */
+.home-main .hero-visual{min-width:0;width:100%;background:transparent;box-shadow:none;border:0;overflow:visible}.home-main .decision-hero{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:0;border:0;box-shadow:none;background:transparent;opacity:1}
+@media(min-width:801px){.home-main>.hero{max-width:1680px;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);padding-right:clamp(1rem,2vw,2.5rem)}}
+@media(max-width:800px){.home-main .hero-visual{max-width:560px;margin-inline:auto}}
