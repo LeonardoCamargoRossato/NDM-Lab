@@ -1,0 +1,3 @@
+# Home background
+
+Reserved for the Planner-approved full-bleed Home background. No image is approved yet. Keep the PNG original (`HomeBackground.png`) and optimized WebP (`HomeBackground.webp`) here. Optional mobile derivative: `HomeBackgroundMobile.webp`, only if approved and necessary. Configure `homeBackground.imagePath` in `code/src/lib/Assets.ts` to `home/background/HomeBackground.webp` after the file exists, register the original and derivative in AssetInventory and map them to Home. Preserve the independent existing Hero image. The current CSS fallback is intentionally neutral and does not make an image request.

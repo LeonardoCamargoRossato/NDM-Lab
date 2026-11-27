@@ -3,3 +3,12 @@ export const assets={hero:root+'home/hero/HumanDecisionMakingHero.webp',heroOrig
 export function webSeerImage(n:number,format:'png'|'webp'){return root+'webseer/gallery/Capa'+String(n).padStart(2,'0')+'.'+format;}
 
 export const templateScreenshots=['ReferenceHome','ReferenceSidebar','ReferenceLearnMore'].map(name=>({name,preview:root+'template/screenshots/'+name+'.webp',original:root+'template/screenshots/'+name+'.png'}));
+
+// Set imagePath only after the Planner's approved WebP exists under assets/.
+export const homeBackground: {imagePath: string | null; position: string; mobilePosition: string; overlayOpacity: number} = {
+  imagePath: null,
+  position: 'center center',
+  mobilePosition: 'center center',
+  overlayOpacity: 0.72,
+};
+export const homeBackgroundUrl = homeBackground.imagePath ? root + homeBackground.imagePath : null;

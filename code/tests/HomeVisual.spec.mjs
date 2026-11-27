@@ -32,3 +32,21 @@ test('language options are horizontal and Home cards prioritize covers',async({p
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
  await page.screenshot({path:info.outputPath('home-media-first.png'),fullPage:true});
 });
+
+test('Home background covers the full scene independently of content',async({page},info)=>{
+ await page.goto('./');
+ const main=page.locator('main.home-main'),layer=main.locator('.home-background');
+ await expect(layer).toHaveAttribute('aria-hidden','true');
+ const m=await main.boundingBox(),b=await layer.boundingBox();
+ expect(Math.abs(m.x-b.x)).toBeLessThan(1);expect(Math.abs(m.y-b.y)).toBeLessThan(1);
+ expect(Math.abs(m.width-b.width)).toBeLessThan(1);expect(Math.abs(m.height-b.height)).toBeLessThan(1);
+ await expect(layer).toHaveCSS('background-size','cover');await expect(layer).toHaveCSS('pointer-events','none');
+ const bg=await layer.evaluate(el=>window.getComputedStyle(el).backgroundImage);
+ if(bg.startsWith('url(')){
+  const url=bg.slice(5,-2);const response=await page.request.get(url);expect(response.ok()).toBeTruthy();
+ }else expect(bg).toContain('linear-gradient');
+ await page.screenshot({path:info.outputPath('home-background.png'),fullPage:true});
+ await page.getByRole('link',{name:/WebSeer/}).first().click();
+ await expect(page.getByRole('heading',{name:'WebSeer',exact:true})).toBeVisible();
+ await expect(page.locator('.home-background')).toHaveCount(0);
+});
