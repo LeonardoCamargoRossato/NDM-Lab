@@ -40,7 +40,7 @@ test('Home assets, original RPD and complete viewer controls',async({page},info)
  expect(createHash('sha256').update(await readFile(await download.path())).digest('hex')).toBe('59a1920363e35e122c373d86c7e56562f34f4309c69974c15b1890c20f91e9da');
  const full=viewer.getByRole('button',{name:'Tela cheia'});
  expect(await page.evaluate(()=>document.fullscreenEnabled)).toBeTruthy();
- await full.click();await expect.poll(()=>page.evaluate(()=>document.fullscreenElement?.classList.contains('image-viewer')||false)).toBe(true);
+ await full.click();await expect.poll(()=>page.evaluate(()=>document.fullscreenElement?.classList.contains('viewer-content')||false)).toBe(true);
  await page.screenshot({path:info.outputPath('rpd-fullscreen.png')});
  await full.click();await expect.poll(()=>page.evaluate(()=>document.fullscreenElement===null)).toBe(true);
  await expect.poll(()=>page.evaluate(()=>document.body.style.overflow)).toBe('hidden');
@@ -110,6 +110,7 @@ test.describe('touch input',()=>{
   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
   await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+35,y:y+25}]});
   await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await cdp.detach();
   await expect.poll(()=>image.evaluate(el=>el.style.transform)).not.toBe(before);
   await page.screenshot({path:info.outputPath('rpd-touch.png')});
   await viewer.getByRole('button',{name:'Fechar',exact:true}).tap();
