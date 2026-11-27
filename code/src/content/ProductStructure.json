@@ -13,7 +13,7 @@
       "navigation": "top",
       "component": "pages/home/HomePage.tsx",
       "assets": [
-        "webseer-capa-1-webp"
+        "webseer-cover-webp"
       ],
       "status": "implemented"
     },

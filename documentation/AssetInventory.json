@@ -25,7 +25,6 @@
       "asset_id": "webseer-capa-1-webp",
       "description": "WebSeer approved screenshot 1 (webp)",
       "pages": [
-        "home",
         "webseer"
       ],
       "path": "code/public/assets/webseer/gallery/Capa01.webp",
@@ -345,6 +344,24 @@
         "code/src/content/WebSeerContent.ts",
         "code/src/lib/Assets.ts"
       ]
+    },
+    {
+      "asset_id": "webseer-cover-webp",
+      "description": "Actual portfolio card cover (snapshot precedence confirmed)",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/webseer/cover/WebSeerCover.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/assets/projects/webseer/WebP/1789400307805-02852533-1924-4936-990b-85f91c19e663-WebSeer_CapaCard.webp",
+      "format": "WEBP",
+      "git_blob_sha": "a530af5a62239c6403d2a0e7ebb86005583f3d26",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx"
+      ]
     }
   ],
   "pending": [
@@ -372,6 +389,11 @@
     {
       "id": "lcr-webseer-marks",
       "status": "original marks pending",
+      "required": true
+    },
+    {
+      "id": "webseer-cover-original",
+      "status": "source PNG remains in portfolio; connector returned empty content for this blob; do not overwrite original",
       "required": true
     }
   ]
