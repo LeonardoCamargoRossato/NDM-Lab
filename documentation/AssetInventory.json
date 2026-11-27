@@ -821,9 +821,9 @@
       "approval": "Project owner requested integration; visual acceptance pending",
       "format": "SVG",
       "git_blob_sha": "d3f7c39040916c5e89f5f8b757f5aa19abbac1b7",
-      "sha256": null,
+      "sha256": "285fcda0c5057815d0eeae1f67a10545e801c2fa553b7ce8fef4adcdbb67c8a0",
       "size_bytes": 3352667,
-      "dimensions": null,
+      "dimensions": "1448 × 1086",
       "rights": "Publication authorized by project owner",
       "access": "public",
       "visual_layer": 3,
@@ -838,7 +838,8 @@
         "code/src/styles/Global.css"
       ],
       "status": "integrated",
-      "delivery": "Home only; image element, not inline SVG"
+      "delivery": "Home only; image element, not inline SVG",
+      "validation": "Git blob SHA, SHA-256, browser decoding and alpha transparency verified in CI across five viewport sizes"
     }
   ],
   "pending": [
