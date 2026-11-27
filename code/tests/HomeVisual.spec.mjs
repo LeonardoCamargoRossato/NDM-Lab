@@ -26,8 +26,10 @@ test('language options are horizontal and Home cards prioritize covers',async({p
   const media=card.locator('.research-card-media'),copy=card.locator('.research-card-copy'),img=media.locator('img');
   await expect.poll(()=>img.evaluate(el=>el.complete&&el.naturalWidth>0)).toBeTruthy();
   const m=await media.boundingBox(),c=await copy.boundingBox(),i=await img.boundingBox();
-  if(info.project.name==='390x844'){expect(m.y+m.height).toBeLessThanOrEqual(c.y+1);expect(i.width).toBeGreaterThan(250)}
-  else{expect(m.width).toBeGreaterThan(c.width);expect(i.width).toBeGreaterThan(160)}
+  const parent=await page.locator('.hero-actions').boundingBox(),cardBox=await card.boundingBox();
+  expect(cardBox.width/parent.width).toBeGreaterThan(.45);expect(cardBox.width/parent.width).toBeLessThan(.51);
+  if(info.project.name==='390x844'){expect(m.y+m.height).toBeLessThanOrEqual(c.y+1);expect(i.width/m.width).toBeGreaterThan(.98)}
+  else{expect(m.width).toBeGreaterThan(c.width);expect(m.width/(m.width+c.width)).toBeCloseTo(.56,1)}
  }
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
  await page.screenshot({path:info.outputPath('home-media-first.png'),fullPage:true});
@@ -93,4 +95,26 @@ test('organic Hero fills its responsive column, retains transparency and loads o
  console.log('ORGANIC_HERO_RENDER',info.project.name,result);
  await page.screenshot({path:info.outputPath('organic-hero.png'),fullPage:true});
  await page.getByRole('button',{name:'Entenda o que é RPD'}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0);expect(failures).toEqual([]);
+});
+
+test('Home fits actual viewport without clipping or scrolling, including short notebook and 5:4 screens',async({page},info)=>{
+ await page.goto('./');
+ const sizes=info.project.name==='1440x900'?[[1440,900],[1366,600],[1280,720],[1280,1024],[320,568],[360,640],[844,390],[568,320],[2560,1440]]:[null];
+ for(const size of sizes){
+  if(size)await page.setViewportSize({width:size[0],height:size[1]});
+  await expect(page.locator('.home-main')).toHaveAttribute('data-fit-relaxed','false');
+  await expect(page.locator('.hero .eyebrow')).toHaveCount(0);
+  await expect.poll(()=>page.evaluate(()=>{
+   const w=window.innerWidth,h=window.innerHeight,main=document.querySelector('.home-main').getBoundingClientRect();
+   const visible=['.topbar','footer','.hero h1','.hero-subtitle','.lead','.research-card','.research-card img','.research-card-copy','.hero-actions .primary','.decision-hero','.rpd-link'].flatMap(selector=>[...document.querySelectorAll(selector)]).every(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0&&r.x>=-1&&r.y>=-1&&r.right<=w+1&&r.bottom<=h+1});
+   const content=[...document.querySelectorAll('.hero h1,.hero-subtitle,.lead,.research-card,.hero-actions .primary,.decision-hero,.rpd-link')].every(el=>{const r=el.getBoundingClientRect();return r.top>=main.top-1&&r.bottom<=main.bottom+1&&r.left>=main.left-1&&r.right<=main.right+1});
+   return {visible,content,scroll:document.documentElement.scrollHeight<=h+1&&document.documentElement.scrollWidth<=w+1};
+  })).toEqual({visible:true,content:true,scroll:true});
+  await page.evaluate(()=>window.scrollTo(0,9999));expect(await page.evaluate(()=>window.scrollY)).toBe(0);
+  const viewport=page.viewportSize();await page.screenshot({path:info.outputPath('home-fit-'+viewport.width+'x'+viewport.height+'.png')});
+ }
+ await page.getByRole('button',{name:'Idioma'}).click();await page.getByRole('button',{name:'EN-US'}).click();
+ await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollHeight<=window.innerHeight+1)).toBeTruthy();
+ await page.getByRole('button',{name:'Language'}).click();await page.getByRole('button',{name:'PT-BR'}).click();
+ await page.getByRole('link',{name:/TE-279 — Tomada de Decisão Naturalista/}).click();await expect(page.locator('.home-app')).toHaveCount(0);
 });
