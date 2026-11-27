@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "pages": [
     {
       "id": "home",
@@ -54,7 +54,7 @@
       },
       "labelKey": "course-deliverables",
       "parentId": "course-te279",
-      "navigation": "side",
+      "navigation": "context",
       "component": "components/cards/AcademicCatalog.tsx",
       "assets": [
         "ita-institutional-logo"
@@ -70,7 +70,7 @@
       },
       "labelKey": "course-documents",
       "parentId": "course-te279",
-      "navigation": "side",
+      "navigation": "context",
       "component": "components/cards/AcademicCatalog.tsx",
       "assets": [
         "ita-institutional-logo"
@@ -130,6 +130,34 @@
       "parentId": null,
       "navigation": "top",
       "component": "pages/about-author/AuthorPage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "article-review",
+      "route": "/artigo/revisao-bibliografica",
+      "labels": {
+        "pt": "Revisão bibliográfica mínima",
+        "en": "Minimum literature review"
+      },
+      "labelKey": "article-review",
+      "parentId": "article-project",
+      "navigation": "side",
+      "component": "pages/article-project/ArticlePage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "article-inventory",
+      "route": "/artigo/inventario",
+      "labels": {
+        "pt": "Inventário de artigos",
+        "en": "Article inventory"
+      },
+      "labelKey": "article-inventory",
+      "parentId": "article-project",
+      "navigation": "side",
+      "component": "pages/article-project/ArticlePage.tsx",
       "assets": [],
       "status": "implemented"
     }
