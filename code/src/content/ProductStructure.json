@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "pages": [
     {
       "id": "home",
@@ -12,7 +12,9 @@
       "parentId": null,
       "navigation": "top",
       "component": "pages/home/HomePage.tsx",
-      "assets": [],
+      "assets": [
+        "webseer-cover-webp"
+      ],
       "status": "implemented"
     },
     {
@@ -54,7 +56,7 @@
       },
       "labelKey": "course-deliverables",
       "parentId": "course-te279",
-      "navigation": "side",
+      "navigation": "context",
       "component": "components/cards/AcademicCatalog.tsx",
       "assets": [
         "ita-institutional-logo"
@@ -70,7 +72,7 @@
       },
       "labelKey": "course-documents",
       "parentId": "course-te279",
-      "navigation": "side",
+      "navigation": "context",
       "component": "components/cards/AcademicCatalog.tsx",
       "assets": [
         "ita-institutional-logo"
@@ -88,7 +90,26 @@
       "parentId": "learn-more",
       "navigation": "dropdown",
       "component": "pages/webseer/WebSeerPage.tsx",
-      "assets": [],
+      "assets": [
+        "webseer-capa-1-webp",
+        "webseer-capa-1-png",
+        "webseer-capa-2-webp",
+        "webseer-capa-2-png",
+        "webseer-capa-3-webp",
+        "webseer-capa-3-png",
+        "webseer-capa-4-webp",
+        "webseer-capa-4-png",
+        "webseer-capa-6-webp",
+        "webseer-capa-6-png",
+        "webseer-capa-7-webp",
+        "webseer-capa-7-png",
+        "webseer-capa-8-webp",
+        "webseer-capa-8-png",
+        "webseer-capa-9-webp",
+        "webseer-capa-9-png",
+        "webseer-capa-10-webp",
+        "webseer-capa-10-png"
+      ],
       "status": "implemented"
     },
     {
@@ -130,6 +151,34 @@
       "parentId": null,
       "navigation": "top",
       "component": "pages/about-author/AuthorPage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "article-review",
+      "route": "/artigo/revisao-bibliografica",
+      "labels": {
+        "pt": "Revisão bibliográfica mínima",
+        "en": "Minimum literature review"
+      },
+      "labelKey": "article-review",
+      "parentId": "article-project",
+      "navigation": "side",
+      "component": "pages/article-project/ArticlePage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "article-inventory",
+      "route": "/artigo/inventario",
+      "labels": {
+        "pt": "Inventário de artigos",
+        "en": "Article inventory"
+      },
+      "labelKey": "article-inventory",
+      "parentId": "article-project",
+      "navigation": "side",
+      "component": "pages/article-project/ArticlePage.tsx",
       "assets": [],
       "status": "implemented"
     }
