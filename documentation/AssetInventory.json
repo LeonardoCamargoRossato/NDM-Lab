@@ -362,25 +362,123 @@
         "code/src/lib/Assets.ts",
         "code/src/pages/home/HomePage.tsx"
       ]
+    },
+    {
+      "asset_id": "rpd-original",
+      "description": "rpd-original",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/home/rpd/RpdThreeExamples.png",
+      "source": "Planner ZIP; exact original",
+      "author": "Leonardo Camargo Rossato",
+      "format": "PNG",
+      "git_blob_sha": "39d7f90d181c9426858c8d59a9ac52d05ae204db",
+      "sha256": "59a1920363e35e122c373d86c7e56562f34f4309c69974c15b1890c20f91e9da",
+      "size_bytes": 2196347,
+      "dimensions": "1491 × 1055",
+      "rights": "Publication authorized by project owner; institutional identity not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx"
+      ],
+      "status": "integrated"
+    },
+    {
+      "asset_id": "te279-emblem-original",
+      "description": "te279-emblem-original",
+      "pages": [
+        "home",
+        "course-te279"
+      ],
+      "path": "code/public/assets/course-te279/branding/Te279Emblem.png",
+      "source": "Planner ZIP; exact original",
+      "author": "Course emblem; supplied by project owner",
+      "format": "PNG",
+      "git_blob_sha": "56126a9409aae9cc5addb67b8eb681d61e10f97e",
+      "sha256": "f8f7cee2c188ec3101977a62f13be7bf02b07ddc666a47d610d673a23b984445",
+      "size_bytes": 310224,
+      "dimensions": "660 × 360",
+      "rights": "Publication authorized by project owner; institutional identity not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx",
+        "code/src/pages/course-te279/overview/CoursePage.tsx"
+      ],
+      "status": "integrated"
+    },
+    {
+      "asset_id": "te279-emblem-webp",
+      "description": "te279-emblem-webp",
+      "pages": [
+        "home",
+        "course-te279"
+      ],
+      "path": "code/public/assets/course-te279/branding/Te279Emblem.webp",
+      "source": "Planner ZIP; supplied WebP derivative",
+      "author": "Course emblem; supplied by project owner",
+      "format": "WEBP",
+      "git_blob_sha": "eedac62462e66e5f81b45103cfc0f23307dd007d",
+      "sha256": "baccfdd18e959cab8310280f6c8836047ab7fbf5f897d46a4a819f9efccef051",
+      "size_bytes": 237248,
+      "dimensions": "660 × 360",
+      "rights": "Publication authorized by project owner; institutional identity not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx",
+        "code/src/pages/course-te279/overview/CoursePage.tsx"
+      ],
+      "status": "integrated"
+    },
+    {
+      "asset_id": "home-hero-original",
+      "description": "home-hero-original",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/home/hero/HumanDecisionMakingHero.png",
+      "source": "Hero produced in prior Builder work; original present on branch",
+      "author": "NDM Lab / generated editorial asset",
+      "format": "PNG",
+      "git_blob_sha": "0fe5d30df8a77abb3fdad9c26185ce2f9842d953",
+      "sha256": null,
+      "size_bytes": 2451624,
+      "dimensions": null,
+      "rights": "Publication authorized by project owner; institutional identity not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx"
+      ],
+      "status": "integrated"
+    },
+    {
+      "asset_id": "home-hero-webp",
+      "description": "home-hero-webp",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/home/hero/HumanDecisionMakingHero.webp",
+      "source": "Hero WebP derivative present on branch",
+      "author": "NDM Lab / generated editorial asset",
+      "format": "WEBP",
+      "git_blob_sha": "9653058e32208eb5bddd28552af51220a31531b1",
+      "sha256": null,
+      "size_bytes": 209016,
+      "dimensions": null,
+      "rights": "Publication authorized by project owner; institutional identity not endorsement",
+      "access": "public",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx"
+      ],
+      "status": "integrated"
     }
   ],
   "pending": [
-    {
-      "id": "te279-emblem",
-      "status": "source not available",
-      "required": true,
-      "notes": "Original PNG, cropped WebP, favicon and social image pending; institutional logo is not a substitute."
-    },
-    {
-      "id": "home-hero",
-      "status": "original not accessible",
-      "required": true
-    },
-    {
-      "id": "rpd-original",
-      "status": "original recovered from authorized email; binary transfer pending",
-      "required": true
-    },
     {
       "id": "template-screenshots",
       "status": "real screenshots pending",

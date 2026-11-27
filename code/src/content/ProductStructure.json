@@ -13,7 +13,12 @@
       "navigation": "top",
       "component": "pages/home/HomePage.tsx",
       "assets": [
-        "webseer-cover-webp"
+        "webseer-cover-webp",
+        "rpd-original",
+        "te279-emblem-original",
+        "te279-emblem-webp",
+        "home-hero-original",
+        "home-hero-webp"
       ],
       "status": "implemented"
     },
@@ -43,7 +48,9 @@
       "navigation": "dropdown",
       "component": "pages/course-te279/overview/CoursePage.tsx",
       "assets": [
-        "ita-institutional-logo"
+        "ita-institutional-logo",
+        "te279-emblem-original",
+        "te279-emblem-webp"
       ],
       "status": "implemented"
     },
