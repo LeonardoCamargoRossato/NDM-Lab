@@ -11,7 +11,7 @@
       "labelKey": "home",
       "parentId": null,
       "navigation": "top",
-      "component": "PageRouter",
+      "component": "pages/home/HomePage.tsx",
       "assets": [],
       "status": "implemented"
     },
@@ -25,7 +25,7 @@
       "labelKey": "learn-more",
       "parentId": null,
       "navigation": "top",
-      "component": "PageRouter",
+      "component": "pages/learn-more/LearnMorePage.tsx",
       "assets": [],
       "status": "implemented"
     },
@@ -39,8 +39,10 @@
       "labelKey": "course-te279",
       "parentId": "learn-more",
       "navigation": "dropdown",
-      "component": "PageRouter",
-      "assets": [],
+      "component": "pages/course-te279/overview/CoursePage.tsx",
+      "assets": [
+        "ita-institutional-logo"
+      ],
       "status": "implemented"
     },
     {
@@ -53,8 +55,10 @@
       "labelKey": "course-deliverables",
       "parentId": "course-te279",
       "navigation": "side",
-      "component": "PageRouter",
-      "assets": [],
+      "component": "components/cards/AcademicCatalog.tsx",
+      "assets": [
+        "ita-institutional-logo"
+      ],
       "status": "implemented"
     },
     {
@@ -67,8 +71,10 @@
       "labelKey": "course-documents",
       "parentId": "course-te279",
       "navigation": "side",
-      "component": "PageRouter",
-      "assets": [],
+      "component": "components/cards/AcademicCatalog.tsx",
+      "assets": [
+        "ita-institutional-logo"
+      ],
       "status": "implemented"
     },
     {
@@ -81,7 +87,7 @@
       "labelKey": "webseer",
       "parentId": "learn-more",
       "navigation": "dropdown",
-      "component": "PageRouter",
+      "component": "pages/webseer/WebSeerPage.tsx",
       "assets": [],
       "status": "implemented"
     },
@@ -95,7 +101,7 @@
       "labelKey": "template",
       "parentId": "learn-more",
       "navigation": "dropdown",
-      "component": "PageRouter",
+      "component": "pages/template/TemplatePage.tsx",
       "assets": [],
       "status": "implemented"
     },
@@ -109,7 +115,7 @@
       "labelKey": "article-project",
       "parentId": "learn-more",
       "navigation": "dropdown",
-      "component": "PageRouter",
+      "component": "pages/article-project/ArticlePage.tsx",
       "assets": [],
       "status": "implemented"
     },
@@ -123,7 +129,7 @@
       "labelKey": "about-author",
       "parentId": null,
       "navigation": "top",
-      "component": "PageRouter",
+      "component": "pages/about-author/AuthorPage.tsx",
       "assets": [],
       "status": "implemented"
     }

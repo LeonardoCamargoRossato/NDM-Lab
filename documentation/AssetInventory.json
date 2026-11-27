@@ -1,1 +1,33 @@
-{"version":"1.2","assets":[],"pending":[{"id":"te279-emblem","status":"source not available","required":true,"notes":"No generic replacement or unauthorized redistribution. Original, WebP, cropped emblem, favicon and social image pending."}]}
+{
+  "version": "1.2",
+  "assets": [
+    {
+      "asset_id": "ita-institutional-logo",
+      "description": "ITA institutional mark shown only in course footer, not the missing TE-279 emblem.",
+      "pages": [
+        "course-te279",
+        "course-deliverables",
+        "course-documents"
+      ],
+      "path": "code/public/assets/branding/ItaLogo.svg",
+      "source": "https://github.com/LeonardoCamargoRossato/ITA-CE235-EmbeddedSystems-RealTime/blob/main/code/public/assets/SVG/marcas/ita-logo.svg",
+      "format": "SVG",
+      "transform": "none",
+      "dimensions": "197 × 74",
+      "access": "public source",
+      "rights": "institutional identification; no institutional endorsement implied",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/components/layout/AcademicLayout.tsx"
+      ]
+    }
+  ],
+  "pending": [
+    {
+      "id": "te279-emblem",
+      "status": "source not available",
+      "required": true,
+      "notes": "Original PNG, cropped WebP, favicon and social image pending; institutional logo is not a substitute."
+    }
+  ]
+}

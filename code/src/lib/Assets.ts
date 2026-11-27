@@ -1,0 +1,1 @@
+export const assets={itaLogo:import.meta.env.BASE_URL+'assets/branding/ItaLogo.svg'} as const;
