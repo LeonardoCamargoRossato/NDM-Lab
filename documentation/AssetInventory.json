@@ -20,6 +20,331 @@
         "code/src/lib/Assets.ts",
         "code/src/components/layout/AcademicLayout.tsx"
       ]
+    },
+    {
+      "asset_id": "webseer-capa-1-webp",
+      "description": "WebSeer approved screenshot 1 (webp)",
+      "pages": [
+        "home",
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa01.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa1-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "3708747265c29308a46c7ce24036e3b7ed852f39",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-1-png",
+      "description": "WebSeer approved screenshot 1 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa01.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa1.png",
+      "format": "PNG",
+      "git_blob_sha": "a2238bf57754bd1683cf2785f61f386834a592d0",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-2-webp",
+      "description": "WebSeer approved screenshot 2 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa02.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa2-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "615beed4e66686b770e36311efccb8997ca2024c",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-2-png",
+      "description": "WebSeer approved screenshot 2 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa02.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa2.png",
+      "format": "PNG",
+      "git_blob_sha": "80f74cc9712f785e878b68ffc29d1679acc90e19",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-3-webp",
+      "description": "WebSeer approved screenshot 3 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa03.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa3-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "c887551eceb245a5245a5c1fa4eacac9dd356dba",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-3-png",
+      "description": "WebSeer approved screenshot 3 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa03.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa3.png",
+      "format": "PNG",
+      "git_blob_sha": "8a7e59aed0f17f7d1b365d692cf0428dc03ad87b",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-4-webp",
+      "description": "WebSeer approved screenshot 4 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa04.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa4-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "1c572fb9fd02e7a06574ae7127e74f6844066f0c",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-4-png",
+      "description": "WebSeer approved screenshot 4 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa04.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa4.png",
+      "format": "PNG",
+      "git_blob_sha": "0c4ae57883c65ce3aa16cd790a750bea60449785",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-6-webp",
+      "description": "WebSeer approved screenshot 6 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa06.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa6-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "b08df8d3e14e87f8ff5965b42a5c41ec7b2ac2f5",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-6-png",
+      "description": "WebSeer approved screenshot 6 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa06.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa6.png",
+      "format": "PNG",
+      "git_blob_sha": "c5249b7c215e5379759049b965c9c27868624006",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-7-webp",
+      "description": "WebSeer approved screenshot 7 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa07.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa7-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "e9261689a7d7f40a35e90569617464a886617493",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-7-png",
+      "description": "WebSeer approved screenshot 7 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa07.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa7.png",
+      "format": "PNG",
+      "git_blob_sha": "56c8d6847635814615018835a88eb2b15858c6d7",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-8-webp",
+      "description": "WebSeer approved screenshot 8 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa08.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa8-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "fcc79b8a8a0fdd9adb28898c05966feb1c875312",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-8-png",
+      "description": "WebSeer approved screenshot 8 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa08.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa8.png",
+      "format": "PNG",
+      "git_blob_sha": "e11de845cd62fe84707a7aeac94ae27307b1c3bc",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-9-webp",
+      "description": "WebSeer approved screenshot 9 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa09.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa9-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "ad75991c1830fde523e6f3f88bbde52b54a0be37",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-9-png",
+      "description": "WebSeer approved screenshot 9 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa09.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa9.png",
+      "format": "PNG",
+      "git_blob_sha": "a1836e3deddc2e106d43a55585721469d6abf6ff",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-10-webp",
+      "description": "WebSeer approved screenshot 10 (webp)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa10.webp",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa10-card.webp",
+      "format": "WEBP",
+      "git_blob_sha": "aecb5703bb5edba7fb61ae8f8910cdff3f6fe387",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
+    },
+    {
+      "asset_id": "webseer-capa-10-png",
+      "description": "WebSeer approved screenshot 10 (png)",
+      "pages": [
+        "webseer"
+      ],
+      "path": "code/public/assets/webseer/gallery/Capa10.png",
+      "source": "https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum/blob/main/code/public/projects/webseer-gallery/capa10.png",
+      "format": "PNG",
+      "git_blob_sha": "6e06a09fd27fa7d3f3d712ea33041c49b6905620",
+      "transform": "unchanged binary copy",
+      "access": "public",
+      "rights": "public project screenshot; project owner authorized reuse",
+      "references": [
+        "code/src/content/WebSeerContent.ts",
+        "code/src/lib/Assets.ts"
+      ]
     }
   ],
   "pending": [
@@ -28,6 +353,26 @@
       "status": "source not available",
       "required": true,
       "notes": "Original PNG, cropped WebP, favicon and social image pending; institutional logo is not a substitute."
+    },
+    {
+      "id": "home-hero",
+      "status": "original not accessible",
+      "required": true
+    },
+    {
+      "id": "rpd-original",
+      "status": "original recovered from authorized email; binary transfer pending",
+      "required": true
+    },
+    {
+      "id": "template-screenshots",
+      "status": "real screenshots pending",
+      "required": true
+    },
+    {
+      "id": "lcr-webseer-marks",
+      "status": "original marks pending",
+      "required": true
     }
   ]
 }
