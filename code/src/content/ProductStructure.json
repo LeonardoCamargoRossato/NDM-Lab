@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "pages": [
+    {
+      "id": "home",
+      "route": "/",
+      "labels": {
+        "pt": "Início",
+        "en": "Home"
+      },
+      "labelKey": "home",
+      "parentId": null,
+      "navigation": "top",
+      "component": "pages/home/HomePage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "learn-more",
+      "route": "/saiba-mais",
+      "labels": {
+        "pt": "Saiba mais",
+        "en": "Learn more"
+      },
+      "labelKey": "learn-more",
+      "parentId": null,
+      "navigation": "top",
+      "component": "pages/learn-more/LearnMorePage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "course-te279",
+      "route": "/disciplina-te279",
+      "labels": {
+        "pt": "Sobre a disciplina — TE-279 NDM",
+        "en": "About the course — TE-279 NDM"
+      },
+      "labelKey": "course-te279",
+      "parentId": "learn-more",
+      "navigation": "dropdown",
+      "component": "pages/course-te279/overview/CoursePage.tsx",
+      "assets": [
+        "ita-institutional-logo"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "course-deliverables",
+      "route": "/disciplina-te279/trabalhos",
+      "labels": {
+        "pt": "Trabalhos entregues",
+        "en": "Course work"
+      },
+      "labelKey": "course-deliverables",
+      "parentId": "course-te279",
+      "navigation": "side",
+      "component": "components/cards/AcademicCatalog.tsx",
+      "assets": [
+        "ita-institutional-logo"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "course-documents",
+      "route": "/disciplina-te279/documentos",
+      "labels": {
+        "pt": "Acervo documental",
+        "en": "Document collection"
+      },
+      "labelKey": "course-documents",
+      "parentId": "course-te279",
+      "navigation": "side",
+      "component": "components/cards/AcademicCatalog.tsx",
+      "assets": [
+        "ita-institutional-logo"
+      ],
+      "status": "implemented"
+    },
+    {
+      "id": "webseer",
+      "route": "/webseer",
+      "labels": {
+        "pt": "Sobre o WebSeer",
+        "en": "About WebSeer"
+      },
+      "labelKey": "webseer",
+      "parentId": "learn-more",
+      "navigation": "dropdown",
+      "component": "pages/webseer/WebSeerPage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "template",
+      "route": "/template",
+      "labels": {
+        "pt": "Sobre o template",
+        "en": "About the template"
+      },
+      "labelKey": "template",
+      "parentId": "learn-more",
+      "navigation": "dropdown",
+      "component": "pages/template/TemplatePage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "article-project",
+      "route": "/artigo",
+      "labels": {
+        "pt": "Sobre o artigo científico",
+        "en": "About the research paper"
+      },
+      "labelKey": "article-project",
+      "parentId": "learn-more",
+      "navigation": "dropdown",
+      "component": "pages/article-project/ArticlePage.tsx",
+      "assets": [],
+      "status": "implemented"
+    },
+    {
+      "id": "about-author",
+      "route": "/sobre-o-autor",
+      "labels": {
+        "pt": "Sobre o autor",
+        "en": "About the author"
+      },
+      "labelKey": "about-author",
+      "parentId": null,
+      "navigation": "top",
+      "component": "pages/about-author/AuthorPage.tsx",
+      "assets": [],
+      "status": "implemented"
+    }
+  ]
+}
