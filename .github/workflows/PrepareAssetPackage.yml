@@ -1,0 +1,73 @@
+name: Prepare NDM asset package
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/PrepareAssetPackage.yml']
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover original portfolio files
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/ndm-package"
+          git clone --depth 1 https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum.git "$RUNNER_TEMP/portfolio"
+          git -C "$RUNNER_TEMP/portfolio" fetch --depth 1 origin 4e2941bdc55c29349a012c682a6ccb228fc06a09
+          git -C "$RUNNER_TEMP/portfolio" checkout --detach 4e2941bdc55c29349a012c682a6ccb228fc06a09
+          cp "$RUNNER_TEMP/portfolio/code/public/projects/logo_LCR_PortifolioApps.png" "$RUNNER_TEMP/ndm-package/LcrLogo.png"
+          cp "$RUNNER_TEMP/portfolio/code/public/assets/projects/webseer/PNG/1789400307805-02852533-1924-4936-990b-85f91c19e663-WebSeer_CapaCard.png" "$RUNNER_TEMP/ndm-package/WebSeerCover.png"
+          cp "$RUNNER_TEMP/portfolio/code/public/projects/webseer.png" "$RUNNER_TEMP/ndm-package/WebSeerBrandCandidate.png"
+          git hash-object "$RUNNER_TEMP/ndm-package/"*.png
+      - name: Install screenshot tooling
+        working-directory: code
+        run: |
+          npm ci
+          npx playwright install chromium
+      - name: Capture published reference website
+        working-directory: code
+        shell: bash
+        run: |
+          cat > CaptureReference.mjs <<'EOF'
+          import { chromium } from '@playwright/test';
+          import { join } from 'node:path';
+          const base = 'https://leonardocamargorossato.github.io/Unifesp-ITA-Execel-nciaOperacional/';
+          const output = join(process.env.RUNNER_TEMP, 'ndm-package');
+          const browser = await chromium.launch({headless:true});
+          try {
+            const page = await browser.newPage({viewport:{width:1440,height:1000}, deviceScaleFactor:1});
+            const go = async (hash) => {
+              const response = await page.goto(base+hash,{waitUntil:'networkidle',timeout:45000});
+              if (!response?.ok() && response !== null) throw new Error('HTTP '+response.status());
+              await page.locator('main#main-content').waitFor({state:'visible'});
+              await page.evaluate(()=>document.fonts.ready);
+            };
+            await go('#/');
+            await page.screenshot({path:join(output,'ReferenceHome.png'),fullPage:true});
+            await page.locator('button.hamburger').click();
+            await page.locator('button.group-toggle').click();
+            await page.locator('#article-submenu').waitFor({state:'visible'});
+            await page.screenshot({path:join(output,'ReferenceSidebar.png')});
+            await go('#/saiba-mais');
+            await page.screenshot({path:join(output,'ReferenceLearnMore.png'),fullPage:true});
+          } finally { await browser.close(); }
+          EOF
+          node CaptureReference.mjs
+      - name: Record provenance and checksums
+        if: always()
+        shell: bash
+        run: |
+          cd "$RUNNER_TEMP/ndm-package"
+          printf '%s\n' 'Original portfolio PNGs: commit 4e2941bdc55c29349a012c682a6ccb228fc06a09.' 'WebSeerBrandCandidate.png is an existing portfolio graphic, not a confirmed official logo.' 'Reference*.png: real screenshots of the published Unifesp-ITA academic site, if capture succeeded.' > README.txt
+          sha256sum *.png > SHA256SUMS.txt
+      - name: Upload downloadable ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: NDM-Lab-Assets-Novos-Temporarios
+          path: ${{ runner.temp }}/ndm-package/
+          if-no-files-found: error
+          retention-days: 14
