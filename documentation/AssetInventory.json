@@ -1,5 +1,5 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "assets": [
     {
       "asset_id": "ita-institutional-logo",
@@ -453,7 +453,8 @@
         "code/src/lib/Assets.ts",
         "code/src/pages/home/HomePage.tsx"
       ],
-      "status": "integrated"
+      "status": "preserved previous version; not requested on Home",
+      "delivery": "versioned for rollback"
     },
     {
       "asset_id": "home-hero-webp",
@@ -475,7 +476,8 @@
         "code/src/lib/Assets.ts",
         "code/src/pages/home/HomePage.tsx"
       ],
-      "status": "integrated"
+      "status": "preserved previous version; not requested on Home",
+      "delivery": "versioned for rollback"
     },
     {
       "asset_id": "lcr-logo-png",
@@ -805,6 +807,39 @@
       ],
       "status": "integrated",
       "delivery": "Home only"
+    },
+    {
+      "asset_id": "home-hero-organic-svg",
+      "logical_name": "HumanDecisionMakingHero",
+      "description": "Drawer-approved organic Home Hero with transparent edges",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/home/hero/HumanDecisionMakingHero.svg",
+      "source": "Drawer; user-provided approved SVG uploaded to main",
+      "author": "NDM Lab Drawer",
+      "approval": "Project owner requested integration; visual acceptance pending",
+      "format": "SVG",
+      "git_blob_sha": "d3f7c39040916c5e89f5f8b757f5aa19abbac1b7",
+      "sha256": "285fcda0c5057815d0eeae1f67a10545e801c2fa553b7ce8fef4adcdbb67c8a0",
+      "size_bytes": 3352667,
+      "dimensions": "1448 × 1086",
+      "rights": "Publication authorized by project owner",
+      "access": "public",
+      "visual_layer": 3,
+      "initial_opacity": 1,
+      "previous_versions": [
+        "code/public/assets/home/hero/HumanDecisionMakingHero.png",
+        "code/public/assets/home/hero/HumanDecisionMakingHero.webp"
+      ],
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx",
+        "code/src/styles/Global.css"
+      ],
+      "status": "integrated",
+      "delivery": "Home only; image element, not inline SVG",
+      "validation": "Git blob SHA, SHA-256, browser decoding and alpha transparency verified in CI across five viewport sizes"
     }
   ],
   "pending": [

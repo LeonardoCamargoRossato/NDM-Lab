@@ -69,3 +69,28 @@ test('Decision Landscape covers the entire Home at 35 percent and loads only the
  await expect(page.getByRole('heading',{name:'WebSeer',exact:true})).toBeVisible();await expect(page.locator('.home-background')).toHaveCount(0);
  expect(failures).toEqual([]);expect(requests.some(u=>u.endsWith('.png'))).toBeFalsy();
 });
+
+test('organic Hero fills its responsive column, retains transparency and loads only on Home',async({page},info)=>{
+ const requests=[];const failures=[];
+ page.on('request',r=>{if(/HumanDecisionMakingHero\.(svg|png|webp)(?:$|\?)/.test(r.url()))requests.push(r.url())});
+ page.on('response',r=>{if(r.status()>=400&&new URL(r.url()).hostname==='127.0.0.1')failures.push(r.url())});
+ await page.goto('./#/webseer');await expect(page.getByRole('heading',{name:'WebSeer',exact:true})).toBeVisible();expect(requests).toHaveLength(0);
+ await page.goto('./#/');const hero=page.locator('.decision-hero');const column=page.locator('.hero-visual');
+ await expect(hero).toHaveAttribute('src',/HumanDecisionMakingHero\.svg$/);await expect.poll(()=>hero.evaluate(el=>el.complete&&el.naturalWidth>0)).toBeTruthy();
+ await expect(hero).toHaveCSS('opacity','1');await expect(hero).toHaveCSS('border-radius','0px');await expect(hero).toHaveCSS('background-color','rgba(0, 0, 0, 0)');await expect(hero).toHaveCSS('box-shadow','none');
+ await expect(page.locator('.home-background')).toHaveCSS('opacity','0.35');
+ const a=await hero.boundingBox(),b=await column.boundingBox();expect(Math.abs(a.width-b.width)).toBeLessThan(1);
+ const result=await hero.evaluate(async img=>{
+  await img.decode();const c=document.createElement('canvas');c.width=128;c.height=128;const ctx=c.getContext('2d');ctx.drawImage(img,0,0,128,128);
+  const pixels=ctx.getImageData(0,0,128,128).data;let transparent=0,opaque=0;for(let i=3;i<pixels.length;i+=4){if(pixels[i]<16)transparent++;if(pixels[i]>240)opaque++}
+  return {width:img.naturalWidth,height:img.naturalHeight,transparent,opaque};
+ });
+ expect(result.transparent).toBeGreaterThan(0);expect(result.opaque).toBeGreaterThan(0);
+ expect(Math.abs(a.width/a.height-result.width/result.height)).toBeLessThan(.03);
+ if(info.project.name==='1920x1080'||info.project.name==='1440x900'||info.project.name==='1366x768'){const copy=await page.locator('.hero-copy').boundingBox();expect(a.x).toBeGreaterThan(copy.x+copy.width-1)}
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
+ expect(requests.some(u=>u.endsWith('.svg'))).toBeTruthy();expect(requests.every(u=>u.endsWith('.svg'))).toBeTruthy();
+ console.log('ORGANIC_HERO_RENDER',info.project.name,result);
+ await page.screenshot({path:info.outputPath('organic-hero.png'),fullPage:true});
+ await page.getByRole('button',{name:'Entenda o que é RPD'}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0);expect(failures).toEqual([]);
+});

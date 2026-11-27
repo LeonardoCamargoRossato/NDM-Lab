@@ -11,3 +11,5 @@ Frontend integration: LCR mark and existing WebSeer candidate graphic in dropdow
 Home background hotfix: full-bleed independent decorative layer prepared. Final artwork selection is reserved for the Planner; no invented image or invalid file URL. Neutral CSS fallback is used until the approved WebP is registered and activated. Hero, navigation, cards and RPD remain unchanged.
 
 Decision Landscape integration: approved uploaded PNG and WebP preserved byte-for-byte; Home uses WebP at 35% over a white base with no secondary overlay. Original and derivative registered, mapped to Home, and guarded by hash tests. Hero/cards/navigation/RPD untouched. Visual evidence and release status are recorded by the PR and Actions runs.
+
+Organic Home Hero: exact Drawer SVG is now the active image; PNG and WebP predecessors are retained unchanged for rollback. The SVG is displayed as an external image element, at full opacity without border, clipping or background. Desktop right column enlarged; mobile retains intrinsic aspect ratio. Decision Landscape remains at 35%. Visual approval pending.
