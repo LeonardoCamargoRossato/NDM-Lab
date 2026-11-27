@@ -110,10 +110,15 @@ test.describe('touch input',()=>{
   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
   await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+35,y:y+25}]});
   await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-  await cdp.detach();
+
   await expect.poll(()=>image.evaluate(el=>el.style.transform)).not.toBe(before);
   await page.screenshot({path:info.outputPath('rpd-touch.png')});
-  await viewer.getByRole('button',{name:'Fechar',exact:true}).tap();
+  const close=viewer.getByRole('button',{name:'Fechar',exact:true});
+  const closeBox=await close.boundingBox();
+  const closePoint={x:Math.round(closeBox.x+closeBox.width/2),y:Math.round(closeBox.y+closeBox.height/2)};
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[closePoint]});
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
   await expect(viewer).toHaveCount(0);
+  await cdp.detach();
  });
 });
