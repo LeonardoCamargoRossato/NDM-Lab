@@ -1,0 +1,114 @@
+name: Organize NDM asset intake
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/OrganizeAssetIntake.yml']
+permissions:
+  contents: write
+jobs:
+  organize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/ndm-lab-v1-1-final-assets
+          fetch-depth: 0
+      - name: Check expected development branch
+        run: test "$(git rev-parse HEAD)" = 101b37c421aa0caf7d77fc623d5b7f3929f1e8b4
+      - name: Install image conversion
+        run: python -m pip install Pillow==11.3.0
+      - name: Verify, organize, optimize and inventory
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import hashlib, json, shutil, subprocess
+          inbox=Path('Assets Novos Temporários')
+          root=Path('code/public/assets')
+          mapping={
+              'LcrLogo.png':('branding/LcrLogo.png','lcr-logo',['template'],'LCR Portfolio original, commit 4e2941bdc55c29349a012c682a6ccb228fc06a09'),
+              'WebSeerBrandCandidate.png':('branding/WebSeerBrandCandidate.png','webseer-brand-candidate',['webseer'],'LCR Portfolio existing graph graphic; official logo unconfirmed'),
+              'WebSeerCover.png':('webseer/cover/WebSeerCover.png','webseer-cover-original',['home','webseer'],'Original LCR Portfolio cover, commit 4e2941bdc55c29349a012c682a6ccb228fc06a09'),
+              'ReferenceHome.png':('template/screenshots/ReferenceHome.png','template-reference-home',['template'],'Real published academic website screenshot; Actions run 46071432875'),
+              'ReferenceSidebar.png':('template/screenshots/ReferenceSidebar.png','template-reference-sidebar',['template'],'Real expanded scientific sidebar screenshot; Actions run 46071432875'),
+              'ReferenceLearnMore.png':('template/screenshots/ReferenceLearnMore.png','template-reference-learn-more',['template'],'Real published Saiba mais screenshot; Actions run 46071432875'),
+          }
+          def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+          def gitsha(p): return subprocess.check_output(['git','hash-object',str(p)],text=True).strip()
+          expected={'LcrLogo.png':'66f0fd27b8d913680a6ae7d00c83feb3c61dd3b2','WebSeerBrandCandidate.png':'f1804c08dc0433bf7d6fdfcd30a8a9f8c7449cd2','WebSeerCover.png':'3cb5a3daec87178ff24e2e807cffb05d29b2815a'}
+          auxiliary={'README.md','README.txt','SHA256SUMS.txt'}
+          assert {p.name for p in inbox.iterdir()}==set(mapping)|auxiliary, 'Unexpected intake contents; stop rather than delete unreviewed data'
+          sums={line.split(maxsplit=1)[1].lstrip('*'):line.split()[0] for line in (inbox/'SHA256SUMS.txt').read_text().splitlines() if line.strip()}
+          assert set(sums)==set(mapping)
+          for name in mapping:
+              src=inbox/name
+              assert digest(src)==sums[name], name
+              if name in expected: assert gitsha(src)==expected[name],name
+              with Image.open(src) as im:
+                  assert im.format=='PNG'
+                  im.verify()
+          invpath=Path('documentation/AssetInventory.json')
+          mapfile=Path('code/src/content/ProductStructure.json')
+          inv=json.loads(invpath.read_text())
+          structure=json.loads(mapfile.read_text())
+          additions=[]
+          for name,(rel,aid,pages,source) in mapping.items():
+              src=inbox/name
+              dst=root/rel
+              dst.parent.mkdir(parents=True,exist_ok=True)
+              assert not dst.exists(),str(dst)
+              shutil.copy2(src,dst)
+              assert digest(dst)==digest(src)
+              with Image.open(dst) as im:
+                  im.load()
+                  dims=f'{im.width} × {im.height}'
+                  opt=dst.with_suffix('.webp')
+                  if name=='WebSeerCover.png':
+                      assert opt.is_file(),'Existing approved cover WebP missing'
+                      with Image.open(opt) as existing: existing.verify()
+                  else:
+                      assert not opt.exists(),str(opt)
+                      if name.startswith('Reference'):
+                          im.convert('RGB').save(opt,'WEBP',quality=88,method=6)
+                      else:
+                          im.convert('RGBA').save(opt,'WEBP',lossless=True,method=6)
+                      with Image.open(opt) as check:
+                          assert check.size==im.size
+                          check.verify()
+                  for f,id_,role in [(dst,aid if name=='WebSeerCover.png' else aid+'-png','original'),(opt,aid+'-webp','optimized')]:
+                      if name=='WebSeerCover.png' and role=='optimized': continue
+                      record={'asset_id':id_,'description':name+' ('+role+')','pages':pages,'path':str(f),'source':source,'author':'Project owner / portfolio or published academic website','format':f.suffix[1:].upper(),'git_blob_sha':gitsha(f),'sha256':digest(f),'size_bytes':f.stat().st_size,'dimensions':dims,'original_path':str(dst),'optimized_path':str(opt),'rights':'Project owner authorized reuse; institutional identification is not endorsement','access':'public','references':['code/src/content/ProductStructure.json'],'status':'available; UI integration pending'}
+                      additions.append(record)
+                  print(f'VERIFIED {dst}: {dst.stat().st_size} bytes; {opt}: {opt.stat().st_size} bytes; {dims}',flush=True)
+          for rec in additions:
+              assert not any(a['asset_id']==rec['asset_id'] for a in inv['assets'])
+              inv['assets'].append(rec)
+              for page in structure['pages']:
+                  if page['id'] in rec['pages']: page['assets'].append(rec['asset_id'])
+          inv['pending']=[{'id':'template-screenshots','status':'files verified; UI gallery integration pending','required':True},{'id':'lcr-webseer-marks','status':'LCR original and WebSeer candidate available; official WebSeer identity unconfirmed; dropdown integration pending','required':True},{'id':'webseer-cover-original','status':'original verified; viewer integration pending','required':True}]
+          inv['version']='1.3'
+          invpath.write_text(json.dumps(inv,ensure_ascii=False,indent=2)+'\n')
+          mapfile.write_text(json.dumps(structure,ensure_ascii=False,indent=2)+'\n')
+          status=Path('documentation/NdmReleaseStatus.md')
+          status.write_text('# NDM Lab V1.1 — asset intake organized\n\nBranch: fix/ndm-lab-v1-1-final-assets.\n\nAll six incoming PNG originals validated against the uploaded SHA-256 manifest and copied without alteration. Five new WebP derivatives were produced; the existing approved WebSeer cover WebP was preserved. The WebSeer graphic is a candidate, not a confirmed official logo. The three intake metadata files were removed from the temporary folder after their provenance was recorded in the inventory; Git history retains them.\n\nHero, RPD and TE-279 emblem are already present and wired in the development branch; functional validation is pending. Next: integrate dropdown marks, real template gallery and cover viewer; confirm WebSeer mark; validate ImageViewer and final CI, PR, merge and publication. No final release claim.\n')
+          # Every destination and derivative has been checked. Remove only the reviewed intake.
+          for name in mapping: assert digest(root/mapping[name][0])==sums[name]
+          for p in inbox.iterdir(): p.unlink()
+          assert not list(inbox.iterdir())
+          inbox.rmdir()
+          print('INTAKE EMPTY: six originals transferred; five WebPs created; three metadata files removed.')
+          PY
+      - name: Validate structure and image paths
+        working-directory: code
+        run: node scripts/ValidateStructure.mjs
+      - name: Commit verified changes and push without force
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- 'Assets Novos Temporários' code/public/assets documentation/AssetInventory.json documentation/NdmReleaseStatus.md code/src/content/ProductStructure.json
+          git diff --cached --stat
+          git commit -m "assets: organize verified intake and create optimized derivatives"
+          git push origin HEAD:refs/heads/fix/ndm-lab-v1-1-final-assets
