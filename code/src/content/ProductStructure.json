@@ -19,7 +19,9 @@
         "te279-emblem-webp",
         "home-hero-original",
         "home-hero-webp",
-        "webseer-cover-original"
+        "webseer-cover-original",
+        "home-background-original",
+        "home-background-webp"
       ],
       "status": "implemented"
     },

@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "assets": [
     {
       "asset_id": "ita-institutional-logo",
@@ -741,6 +741,70 @@
         "code/src/pages/template/TemplatePage.tsx"
       ],
       "status": "integrated"
+    },
+    {
+      "asset_id": "home-background-original",
+      "logical_name": "HomeBackground",
+      "description": "Decision Landscape — original approved PNG",
+      "concept": "Decision Landscape",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/home/background/HomeBackground.png",
+      "source": "NDM Lab Drawer, AI-generated artwork; manually uploaded by project owner",
+      "author": "Drawer (AI-generated)",
+      "approval": "Planner and project owner approved",
+      "format": "PNG",
+      "git_blob_sha": "df6a3db206be0992f548a99080d63a5361bf5f0f",
+      "sha256": "33701e034858e1eb3d45da0b41f7c25abc8a7c54a5ba48a49bca7b2fe48c0371",
+      "size_bytes": 2471826,
+      "dimensions": "1672 × 941",
+      "original_path": "code/public/assets/home/background/HomeBackground.png",
+      "optimized_path": "code/public/assets/home/background/HomeBackground.webp",
+      "visual_layer": 2,
+      "initial_opacity": 0.35,
+      "transform": "unchanged original",
+      "rights": "Project owner authorized publication",
+      "access": "public",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx",
+        "code/src/styles/Global.css"
+      ],
+      "status": "integrated",
+      "delivery": "versioned archive; not requested at runtime"
+    },
+    {
+      "asset_id": "home-background-webp",
+      "logical_name": "HomeBackground",
+      "description": "Decision Landscape — optimized delivery WebP",
+      "concept": "Decision Landscape",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/home/background/HomeBackground.webp",
+      "source": "NDM Lab Drawer, AI-generated artwork; manually uploaded by project owner",
+      "author": "Drawer (AI-generated)",
+      "approval": "Planner and project owner approved",
+      "format": "WEBP",
+      "git_blob_sha": "cdfd573b198453c857df6bbb2afdf9cc52e7789d",
+      "sha256": "78e6b2558229b7babbab34c5212209a7f2ebf149e37fc9b179aad3d0b43dbe02",
+      "size_bytes": 112512,
+      "dimensions": "1672 × 941",
+      "original_path": "code/public/assets/home/background/HomeBackground.png",
+      "optimized_path": "code/public/assets/home/background/HomeBackground.webp",
+      "visual_layer": 2,
+      "initial_opacity": 0.35,
+      "transform": "approved optimized derivative, unchanged",
+      "rights": "Project owner authorized publication",
+      "access": "public",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx",
+        "code/src/styles/Global.css"
+      ],
+      "status": "integrated",
+      "delivery": "Home only"
     }
   ],
   "pending": [

@@ -9,3 +9,5 @@ Hero, RPD and TE-279 emblem are already present and wired in the development bra
 Frontend integration: LCR mark and existing WebSeer candidate graphic in dropdown; template reference screenshots available via reusable viewer; original WebSeer cover linked to viewer. Official WebSeer mark remains unconfirmed. Full functional tests and publication must be verified on final SHA.
 
 Home background hotfix: full-bleed independent decorative layer prepared. Final artwork selection is reserved for the Planner; no invented image or invalid file URL. Neutral CSS fallback is used until the approved WebP is registered and activated. Hero, navigation, cards and RPD remain unchanged.
+
+Decision Landscape integration: approved uploaded PNG and WebP preserved byte-for-byte; Home uses WebP at 35% over a white base with no secondary overlay. Original and derivative registered, mapped to Home, and guarded by hash tests. Hero/cards/navigation/RPD untouched. Visual evidence and release status are recorded by the PR and Actions runs.

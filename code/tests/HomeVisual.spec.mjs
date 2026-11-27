@@ -33,20 +33,39 @@ test('language options are horizontal and Home cards prioritize covers',async({p
  await page.screenshot({path:info.outputPath('home-media-first.png'),fullPage:true});
 });
 
-test('Home background covers the full scene independently of content',async({page},info)=>{
- await page.goto('./');
+test('Decision Landscape covers the entire Home at 35 percent and loads only the approved WebP',async({page},info)=>{
+ const requests=[],failures=[];
+ page.on('request',r=>{if(/HomeBackground\.(png|webp)(?:$|\?)/.test(r.url()))requests.push(r.url())});
+ page.on('response',r=>{if(r.status()>=400&&new URL(r.url()).hostname==='127.0.0.1')failures.push(r.url())});
+ await page.goto('./#/webseer');await expect(page.getByRole('heading',{name:'WebSeer',exact:true})).toBeVisible();
+ await expect(page.locator('.home-background')).toHaveCount(0);expect(requests).toHaveLength(0);
+ await page.goto('./#/');
  const main=page.locator('main.home-main'),layer=main.locator('.home-background');
  await expect(layer).toHaveAttribute('aria-hidden','true');
+ await expect(layer).toHaveCSS('opacity','0.35');await expect(main).toHaveCSS('background-color','rgb(255, 255, 255)');
+ await expect(main.locator('.hero')).toHaveCSS('opacity','1');
+ await expect(layer).toHaveCSS('background-size','cover');await expect(layer).toHaveCSS('pointer-events','none');await expect(layer).toHaveCSS('background-repeat','no-repeat');
  const m=await main.boundingBox(),b=await layer.boundingBox();
  expect(Math.abs(m.x-b.x)).toBeLessThan(1);expect(Math.abs(m.y-b.y)).toBeLessThan(1);
  expect(Math.abs(m.width-b.width)).toBeLessThan(1);expect(Math.abs(m.height-b.height)).toBeLessThan(1);
- await expect(layer).toHaveCSS('background-size','cover');await expect(layer).toHaveCSS('pointer-events','none');
- const bg=await layer.evaluate(el=>window.getComputedStyle(el).backgroundImage);
- if(bg.startsWith('url(')){
-  const url=bg.slice(5,-2);const response=await page.request.get(url);expect(response.ok()).toBeTruthy();
- }else expect(bg).toContain('linear-gradient');
- await page.screenshot({path:info.outputPath('home-background.png'),fullPage:true});
+ expect(m.x).toBe(0);expect(m.width).toBe(await page.evaluate(()=>window.innerWidth));
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
+ const bg=await layer.evaluate(el=>window.getComputedStyle(el).backgroundImage);expect(bg).toMatch(/HomeBackground\.webp/);
+ const dimensions=await layer.evaluate(async el=>{const url=window.getComputedStyle(el).backgroundImage.slice(5,-2);const image=document.createElement('img');image.src=url;await image.decode();return [image.naturalWidth,image.naturalHeight]});
+ expect(dimensions).toEqual([1672,941]);
+ expect(requests.some(u=>u.endsWith('/HomeBackground.webp'))).toBeTruthy();expect(requests.some(u=>u.endsWith('.png'))).toBeFalsy();
+ await expect(page.locator('.hero h1')).toBeVisible();await expect(page.locator('.research-card')).toHaveCount(2);
+ await page.evaluate(()=>document.fonts.ready);
+ await page.screenshot({path:info.outputPath('decision-landscape-35.png'),fullPage:true});
+ if(info.project.name==='1920x1080'){
+  for(const opacity of [0.30,0.35,0.40]){
+   await layer.evaluate((el,value)=>el.style.setProperty('--background-opacity',String(value)),opacity);
+   await expect(layer).toHaveCSS('opacity',String(opacity));
+   await page.screenshot({path:info.outputPath('comparison-'+Math.round(opacity*100)+'.png'),fullPage:true});
+  }
+  await layer.evaluate(el=>el.style.setProperty('--background-opacity','0.35'));
+ }
  await page.getByRole('link',{name:/WebSeer/}).first().click();
- await expect(page.getByRole('heading',{name:'WebSeer',exact:true})).toBeVisible();
- await expect(page.locator('.home-background')).toHaveCount(0);
+ await expect(page.getByRole('heading',{name:'WebSeer',exact:true})).toBeVisible();await expect(page.locator('.home-background')).toHaveCount(0);
+ expect(failures).toEqual([]);expect(requests.some(u=>u.endsWith('.png'))).toBeFalsy();
 });
