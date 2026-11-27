@@ -1,0 +1,83 @@
+name: Verify published Decision Landscape
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/VerifyDecisionLandscape.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 1dabfed68126012628ac7843a74f899595353f6f
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: code/package-lock.json
+      - working-directory: code
+        run: npm ci && npx playwright install --with-deps chromium
+      - name: Verify actual deployed Home
+        working-directory: code
+        shell: bash
+        run: |
+          mkdir -p test-results/published
+          cat > VerifyPublished.mjs <<'EOF'
+          import {chromium} from '@playwright/test';
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          const base='https://leonardocamargorossato.github.io/NDM-Lab/';
+          const browser=await chromium.launch();
+          try {
+            let ready=false;
+            for(let attempt=0;attempt<8;attempt++){
+              const probe=await browser.newPage();
+              try{
+                await probe.goto(base+'?release=1dabfed&attempt='+attempt,{waitUntil:'networkidle'});
+                ready=await probe.locator('.home-background').evaluate(el=>getComputedStyle(el).opacity==='0.35'&&getComputedStyle(el).backgroundImage.includes('HomeBackground.webp')).catch(()=>false);
+              }finally{await probe.close()}
+              if(ready)break;
+              await new Promise(resolve=>setTimeout(resolve,5000));
+            }
+            assert.ok(ready,'Expected release not visible on public site');
+            for(const [width,height] of [[1920,1080],[390,844]]){
+              const page=await browser.newPage({viewport:{width,height}});
+              const requests=[],errors=[];
+              page.on('request',r=>{if(r.url().includes('HomeBackground.'))requests.push(r.url())});
+              page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)errors.push(r.url())});
+              await page.goto(base+'#/webseer',{waitUntil:'networkidle'});
+              await page.locator('main h1').waitFor();
+              assert.equal(requests.length,0);
+              await page.goto(base+'#/',{waitUntil:'networkidle'});
+              const layer=page.locator('.home-background');
+              const style=await layer.evaluate(el=>({opacity:getComputedStyle(el).opacity,image:getComputedStyle(el).backgroundImage,cover:getComputedStyle(el).backgroundSize}));
+              assert.equal(style.opacity,'0.35');assert.equal(style.cover,'cover');
+              assert.ok(style.image.includes('HomeBackground.webp'));
+              assert.ok(requests.some(u=>u.endsWith('HomeBackground.webp')));
+              assert.ok(!requests.some(u=>u.endsWith('.png')));
+              const m=await page.locator('main.home-main').boundingBox(),b=await layer.boundingBox();
+              assert.deepEqual(b,m);
+              assert.equal(m.width,width);
+              const asset=await page.request.get(base+'assets/home/background/HomeBackground.webp');
+              assert.ok(asset.ok());
+              assert.equal(createHash('sha256').update(await asset.body()).digest('hex'),'78e6b2558229b7babbab34c5212209a7f2ebf149e37fc9b179aad3d0b43dbe02');
+              await page.screenshot({path:'test-results/published/Home-'+width+'x'+height+'.png',fullPage:true});
+              await page.getByRole('button',{name:'Entenda o que é RPD'}).click();
+              await page.getByRole('dialog').waitFor();
+              await page.keyboard.press('Escape');
+              await page.getByRole('dialog').waitFor({state:'hidden'});
+              assert.deepEqual(errors,[]);
+              console.log('PUBLISHED VERIFIED',width,height,style);
+              await page.close();
+            }
+          }finally{await browser.close()}
+          EOF
+          node VerifyPublished.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: published-home-evidence
+          path: code/test-results/published
