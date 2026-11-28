@@ -1,0 +1,62 @@
+name: Verify real portfolio in 4 by 3 preview
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/VerifyEnhancedAbout.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 25042da8c029d1753b62634d58c5befe6273e89b
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - working-directory: code
+        run: npm ci && npm run build && npx playwright install chromium
+      - name: Verify real iframe and capture responsive About
+        working-directory: code
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/ndm-preview.log 2>&1 &
+          mkdir -p test-results/enhanced-about
+          cat > VerifyEnhanced.mjs <<'EOF'
+          import {chromium} from '@playwright/test';
+          import assert from 'node:assert/strict';
+          const browser=await chromium.launch();
+          try{
+           for(const [width,height] of [[1920,1080],[1440,900],[1366,768],[768,1024],[390,844]]){
+            const page=await browser.newPage({viewport:{width,height}});
+            await page.goto('http://127.0.0.1:4173/NDM-Lab/#/sobre-o-autor');
+            const frame=page.frameLocator('.app-preview-stage iframe');
+            await page.locator('.app-preview-stage').scrollIntoViewIfNeeded();
+            await frame.locator('.hero-v3').waitFor({state:'visible',timeout:45000});
+            await frame.locator('#projects').waitFor({state:'attached',timeout:20000});
+            const geom=await frame.locator('body').evaluate(el=>({w:el.ownerDocument.defaultView.innerWidth,h:el.ownerDocument.defaultView.innerHeight,scrollWidth:el.ownerDocument.documentElement.scrollWidth}));
+            assert.equal(geom.w,1440);assert.equal(geom.h,1080);assert.ok(geom.scrollWidth<=1441);
+            await page.locator('.speaking-gallery').scrollIntoViewIfNeeded();
+            await page.locator('.speaking-card img').first().evaluate(el=>el.decode());
+            await page.evaluate(()=>window.scrollTo(0,0));
+            await page.screenshot({path:'test-results/enhanced-about/About-'+width+'x'+height+'.png',fullPage:true});
+            if(width===1440){
+             await page.locator('.app-preview').hover();await page.waitForTimeout(300);
+             await page.screenshot({path:'test-results/enhanced-about/AboutHover.png',fullPage:true});
+             await frame.locator('.hero-v3').evaluate(el=>el.ownerDocument.defaultView.scrollTo(0,700));
+             assert.ok(await frame.locator('.hero-v3').evaluate(el=>el.ownerDocument.defaultView.scrollY)>0);
+             await page.getByRole('button',{name:'Mostrar todas as imagens'}).click();
+             await page.locator('.speaking-grid').scrollIntoViewIfNeeded();
+             await page.screenshot({path:'test-results/enhanced-about/GalleryExpanded.png',fullPage:true});
+            }
+            console.log('ACTUAL_4_3_VERIFIED',width,height,JSON.stringify(geom));await page.close();
+           }
+          }finally{await browser.close()}
+          EOF
+          node VerifyEnhanced.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: enhanced-about-real-screenshots
+          path: code/test-results/enhanced-about
