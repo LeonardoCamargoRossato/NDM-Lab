@@ -19,7 +19,7 @@ test('author preview geometry, independent action, locale and route isolation',a
   await page.locator('.app-preview').hover();await expect(page.locator('.app-preview-action')).toHaveCSS('opacity','1');
   await page.locator('.app-preview-open').focus();await expect(page.locator('.app-preview-action')).toHaveCSS('opacity','1');
  }
- const button=page.frameLocator('iframe').getByRole('button',{name:'Preview action'});await button.click();await expect(button).toHaveText('Activated');
+ const button=page.frameLocator('iframe').getByRole('button',{name:'Preview action'});await button.click();await expect(page.frameLocator('iframe').getByRole('button',{name:'Activated',exact:true})).toBeVisible();
  await page.frameLocator('iframe').locator('body').evaluate(el=>el.ownerDocument.defaultView.scrollTo(0,500));
  expect(await page.frameLocator('iframe').locator('body').evaluate(el=>el.ownerDocument.defaultView.scrollY)).toBeGreaterThan(0);
  const action=page.getByRole('link',{name:/Abrir portfólio/}).filter({visible:true});await expect(action).toHaveAttribute('target','_blank');
