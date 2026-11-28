@@ -1,5 +1,5 @@
 {
-  "version": "1.5",
+  "version": "1.6",
   "assets": [
     {
       "asset_id": "ita-institutional-logo",
@@ -837,9 +837,76 @@
         "code/src/pages/home/HomePage.tsx",
         "code/src/styles/Global.css"
       ],
-      "status": "integrated",
+      "status": "preserved approved source; not loaded by default",
       "delivery": "Home only; image element, not inline SVG",
-      "validation": "Git blob SHA, SHA-256, browser decoding and alpha transparency verified in CI across five viewport sizes"
+      "validation": "Git blob SHA, SHA-256, browser decoding and alpha transparency verified in CI across five viewport sizes",
+      "optimized_path": "code/public/assets/home/hero/HumanDecisionMakingHeroOrganic.webp"
+    },
+    {
+      "asset_id": "author-profile-original",
+      "description": "Official profile photograph; source LCR Portfolio at 4e2941bdc55c29349a012c682a6ccb228fc06a09",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/profile/AuthorProfile.jpeg",
+      "source": "Official profile photograph; source LCR Portfolio at 4e2941bdc55c29349a012c682a6ccb228fc06a09",
+      "author": "Project owner / Drawer",
+      "format": "JPEG",
+      "git_blob_sha": "e075f98c2e71eb0465a91731bc3770fdf06ca162",
+      "sha256": "47dd48f8b22c574f3f575ed7dfc318d526b4255eca74c4f81c34da82f6a55a2f",
+      "size_bytes": 28945,
+      "dimensions": "640 × 640",
+      "rights": "Project owner authorized publication",
+      "access": "public",
+      "status": "integrated",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/about-author/AuthorPage.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-profile-webp",
+      "description": "Exact official profile display version from LCR Portfolio",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/profile/AuthorProfile.webp",
+      "source": "Exact official profile display version from LCR Portfolio",
+      "author": "Project owner / Drawer",
+      "format": "WEBP",
+      "git_blob_sha": "ad311ecaa26b0b37ba26bbea7fec36a41aae9e61",
+      "sha256": "c2b93202bee240a884d49a6aeaa55b2f99768a0202d8d2579cdfa59b0671b9dc",
+      "size_bytes": 17094,
+      "dimensions": "640 × 640",
+      "rights": "Project owner authorized publication",
+      "access": "public",
+      "status": "integrated",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/about-author/AuthorPage.tsx"
+      ]
+    },
+    {
+      "asset_id": "home-hero-organic-webp",
+      "description": "Derived directly from approved organic SVG using Chromium rasterization and Pillow WebP",
+      "pages": [
+        "home"
+      ],
+      "path": "code/public/assets/home/hero/HumanDecisionMakingHeroOrganic.webp",
+      "source": "Derived directly from approved organic SVG using Chromium rasterization and Pillow WebP",
+      "author": "Project owner / Drawer",
+      "format": "WEBP",
+      "git_blob_sha": "6475cf9cf10c6806eb7b0345b720c582ae572dac",
+      "sha256": "25e23475ea374739c17c054dc14988a27553ffe271a958d659e5a5defebcc40d",
+      "size_bytes": 338670,
+      "dimensions": "1448 × 1086",
+      "rights": "Project owner authorized publication",
+      "access": "public",
+      "status": "integrated",
+      "references": [
+        "code/src/lib/Assets.ts",
+        "code/src/pages/home/HomePage.tsx"
+      ]
     }
   ],
   "pending": [

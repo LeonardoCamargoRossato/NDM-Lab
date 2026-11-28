@@ -22,7 +22,8 @@
         "webseer-cover-original",
         "home-background-original",
         "home-background-webp",
-        "home-hero-organic-svg"
+        "home-hero-organic-svg",
+        "home-hero-organic-webp"
       ],
       "status": "implemented"
     },
@@ -174,7 +175,10 @@
       "parentId": null,
       "navigation": "top",
       "component": "pages/about-author/AuthorPage.tsx",
-      "assets": [],
+      "assets": [
+        "author-profile-original",
+        "author-profile-webp"
+      ],
       "status": "implemented"
     },
     {
