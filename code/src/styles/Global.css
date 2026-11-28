@@ -79,3 +79,26 @@ footer a{color:#234d70}
 
 /* Match the left content to the image height, without shrinking text globally. */
 @media(min-width:801px){.home-app .hero-visual{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-start}.home-app .decision-hero{width:100%;height:auto}.home-app .hero-copy{padding-bottom:38px}.home-app .hero-actions .primary{margin-top:auto}}
+
+/* Enhanced author only: aligned with header controls; 34/66 columns. */
+.inner-main:has(>.author-experience){width:calc(100% - 2 * clamp(1rem,4vw,4rem));max-width:none;padding:2rem 0}
+.author-experience{grid-template-columns:minmax(0,34fr) minmax(0,66fr);gap:clamp(16px,2vw,32px);align-items:start}
+.author-profile{background:rgba(35,77,112,.035);border:1px solid rgba(35,77,112,.10);border-radius:12px;padding:clamp(14px,1.5vw,24px);width:100%}
+.author-identity{display:flex;align-items:center;gap:clamp(10px,1.3vw,20px);margin-bottom:1rem;width:100%}
+.author-identity .author-profile-photo{width:clamp(85px,9vw,150px);max-width:40%;height:auto;margin:0;flex-shrink:0}
+.author-identity>div{min-width:0}.author-identity h1{font-size:clamp(1.12rem,1.6vw,1.5rem);overflow-wrap:break-word}.author-identity .author-role{margin:0;font-size:.84rem}
+.author-profile p{font-size:.86rem;line-height:1.5;margin-bottom:.6rem}.author-education{margin:0 0 .6rem}.author-education a{font-weight:750}.author-education p{margin:0 0 .35rem}
+.author-skills{gap:.35rem}.author-skills span{font-size:.75rem}
+.author-read-more{border:0;background:transparent;color:var(--blue);padding:.4rem 0;font-weight:700;font-size:.85rem;margin-bottom:.7rem}
+.author-portfolio-summary{border-top:1px solid var(--line);padding-top:.7rem}
+.author-details{border:1px solid var(--line);border-radius:12px;width:min(680px,90vw);max-height:85dvh;overflow:auto;padding:1.25rem;color:var(--navy)}.author-details::backdrop{background:#102b4666}.author-details-heading{display:flex;align-items:center;justify-content:space-between}.author-details-heading button{font-size:1.5rem;border:0;background:transparent;color:var(--navy)}
+.author-portfolio-column{min-width:0;display:flex;flex-direction:column;gap:1.4rem}.author-portfolio-column .app-preview{width:100%;margin:0}
+.speaking-gallery{min-width:0;width:100%}.speaking-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:.7rem}.speaking-heading h2{font-size:1.2rem;margin-bottom:.2rem}.speaking-heading p{font-size:.83rem;margin:0}
+.speaking-controls{display:flex;align-items:center;gap:.35rem}.speaking-controls span{font-size:.8rem;font-weight:650;white-space:nowrap}.speaking-controls button{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:7px;min-width:36px;min-height:36px;font-size:1.15rem}.speaking-controls button:hover,.speaking-controls button[aria-expanded=true]{background:#e2edf5}
+.speaking-rail{position:relative;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:2px 2px 8px;overscroll-behavior-x:contain}
+.speaking-card,.speaking-grid-card{min-width:0;border:1px solid var(--line);border-radius:9px;background:#fff;overflow:hidden;padding:0;text-align:left;color:var(--navy);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.speaking-card{flex:0 0 calc((100% - 24px)/3);scroll-snap-align:start}.speaking-card img,.speaking-grid-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#edf3f7}.speaking-card span,.speaking-grid-card span{display:block;font-size:.75rem;padding:.55rem;line-height:1.35;font-weight:650}.speaking-card:hover,.speaking-grid-card:hover{box-shadow:0 4px 12px #142d4826;transform:translateY(-1px)}
+.speaking-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:.8rem}
+@media(max-width:1100px){.speaking-card{flex-basis:calc((100% - 12px)/2)}}
+@media(max-width:800px){.inner-main:has(>.author-experience){width:calc(100% - 1.6rem);padding:1.3rem 0}.author-experience{grid-template-columns:minmax(0,1fr)}.author-identity .author-profile-photo{width:120px}.author-portfolio-column{gap:1.2rem}}
+@media(max-width:500px){.inner-main:has(>.author-experience){width:calc(100% - 1.1rem)}.speaking-card{flex-basis:85%}.speaking-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.author-identity .author-profile-photo{width:98px}}

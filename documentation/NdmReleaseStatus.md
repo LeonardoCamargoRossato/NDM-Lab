@@ -18,3 +18,5 @@ Home viewport hotfix: removed research laboratory eyebrow; cards share a two-col
 
 Short mobile landscape uses a compact image-first card layout to preserve readable copy without triggering overflow (568 × 320).
 Author interactive portfolio release: compact author profile, independent reusable 1440 × 810 iframe with external action, stacked Home cards, natural scroll on compact devices, light footer, optimized transparent Hero derivative. Assets and performance evidence registered separately by controlled preparation workflow.
+
+Enhanced About: 34/66 columns, official bilingual About snapshot, 4:3 interactive preview (1440 × 1080), ten visible speaking images in source editorial order, native carousel/grid and existing PNG viewer. Home unchanged. Hidden items excluded from NDM Lab.
