@@ -1,0 +1,155 @@
+name: Prepare author and organic Hero assets
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/PrepareAuthorHero.yml']
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/home-layout-author-performance
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Preserve official profile and render approved Hero
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "9b1d2348d305881b58a526f5a08ed8463acc8c9d"
+          git clone --quiet --filter=blob:none --no-checkout https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum.git /tmp/portfolio
+          mkdir -p code/public/assets/about-author/profile
+          for ext in jpeg webp; do
+            git -C /tmp/portfolio show 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/profile/1792380122932-87ee4d65-cc32-4005-85d5-24fb6ed67957-fotoperfilLCR.$ext > code/public/assets/about-author/profile/AuthorProfile.$ext
+          done
+          test "$(git hash-object code/public/assets/about-author/profile/AuthorProfile.jpeg)" = "e075f98c2e71eb0465a91731bc3770fdf06ca162"
+          test "$(git hash-object code/public/assets/about-author/profile/AuthorProfile.webp)" = "ad311ecaa26b0b37ba26bbea7fec36a41aae9e61"
+          cd code
+          npm ci
+          npx playwright install chromium
+          cat > /tmp/render-script.txt <<'EOF'
+          import {chromium} from '@playwright/test';
+          import fs from 'node:fs';
+          const bytes=fs.readFileSync('public/assets/home/hero/HumanDecisionMakingHero.svg');
+          const svg=bytes.toString('utf8');
+          console.log('SVG analysis', {bytes:bytes.length,embeddedRaster:(svg.match(/data:image\/(?:png|jpeg|webp);base64,/g)||[]).length,filters:(svg.match(/<filter\b/g)||[]).length,paths:(svg.match(/<path\b/g)||[]).length});
+          const browser=await chromium.launch();
+          try{
+           const page=await browser.newPage();
+           const data='data:image/svg+xml;base64,'+bytes.toString('base64');
+           const result=await page.evaluate(async data=>{
+            const img=new Image();img.src=data;await img.decode();
+            const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;c.getContext('2d').drawImage(img,0,0);
+            return {png:c.toDataURL('image/png').split(',')[1],width:c.width,height:c.height};
+           },data);
+           if(result.width!==1448||result.height!==1086)throw Error('Unexpected intrinsic dimensions');
+           fs.writeFileSync('/tmp/OrganicHero.png',Buffer.from(result.png,'base64'));
+          }finally{await browser.close()}
+          EOF
+          cp /tmp/render-script.txt PrepareHero.mjs
+          node PrepareHero.mjs
+          rm PrepareHero.mjs
+      - name: Optimize, check equivalence and register assets
+        shell: bash
+        run: |
+          python -m pip install --quiet Pillow==11.3.0 numpy==2.2.6
+          python - <<'PY'
+          import json, pathlib, hashlib, subprocess
+          import numpy as np
+          from PIL import Image,ImageDraw
+          root=pathlib.Path('code/public/assets')
+          original=Image.open('/tmp/OrganicHero.png').convert('RGBA')
+          target=root/'home/hero/HumanDecisionMakingHeroOrganic.webp'
+          # Choose the highest quality under 350 KB, never reuse the earlier WebP.
+          for q in [96,94,92,90,88,86,84,82,80,78,76]:
+              original.save(target,'WEBP',quality=q,method=6,alpha_quality=100,exact=True)
+              if target.stat().st_size<=350000: break
+          decoded=Image.open(target).convert('RGBA')
+          assert decoded.size==original.size
+          a=np.asarray(original).astype(float); b=np.asarray(decoded).astype(float)
+          assert np.array_equal(a[:,:,3],b[:,:,3]), 'alpha must be preserved exactly'
+          mask=a[:,:,3]>16
+          rmse=float(np.sqrt(np.mean((a[:,:,:3][mask]-b[:,:,:3][mask])**2)))
+          assert rmse<9,rmse
+          evidence=pathlib.Path('/tmp/author-hero-evidence'); evidence.mkdir()
+          canvas=Image.new('RGB',(1448,580),'white')
+          for i,img in enumerate([original,decoded]):
+              p=img.copy();p.thumbnail((700,525)); canvas.paste(p,(12+i*724,40),p)
+          draw=ImageDraw.Draw(canvas)
+          draw.text((12,12),'SVG original rendered at intrinsic size',fill='black')
+          draw.text((736,12),'Optimized transparent WebP',fill='black')
+          canvas.save(evidence/'HeroComparison.png')
+          original.save(evidence/'HeroOriginalRendered.png')
+          decoded.save(evidence/'HeroOptimizedRendered.png')
+          original_size=(root/'home/hero/HumanDecisionMakingHero.svg').stat().st_size
+          metrics={'original_bytes':original_size,'optimized_bytes':target.stat().st_size,'reduction_percent':round(100*(1-target.stat().st_size/original_size),2),'quality':q,'dimensions':list(decoded.size),'alpha_exact':True,'visible_rgb_rmse':round(rmse,3)}
+          (evidence/'HeroMetrics.json').write_text(json.dumps(metrics,indent=2))
+          print('HERO_METRICS',json.dumps(metrics))
+          invpath=pathlib.Path('documentation/AssetInventory.json'); inv=json.loads(invpath.read_text())
+          items=[('author-profile-original','about-author/profile/AuthorProfile.jpeg','about-author','Official profile photograph; source LCR Portfolio at 4e2941bdc55c29349a012c682a6ccb228fc06a09'),('author-profile-webp','about-author/profile/AuthorProfile.webp','about-author','Exact official profile display version from LCR Portfolio'),('home-hero-organic-webp','home/hero/HumanDecisionMakingHeroOrganic.webp','home','Derived directly from approved organic SVG using Chromium rasterization and Pillow WebP')]
+          for aid,rel,page,source in items:
+              path=root/rel; raw=path.read_bytes(); im=Image.open(path)
+              inv['assets'].append({'asset_id':aid,'description':source,'pages':[page],'path':str(path),'source':source,'author':'Project owner / Drawer','format':im.format,'git_blob_sha':subprocess.check_output(['git','hash-object',str(path)],text=True).strip(),'sha256':hashlib.sha256(raw).hexdigest(),'size_bytes':len(raw),'dimensions':f'{im.width} × {im.height}','rights':'Project owner authorized publication','access':'public','status':'integrated','references':['code/src/lib/Assets.ts', 'code/src/pages/'+('about-author/AuthorPage.tsx' if page=='about-author' else 'home/HomePage.tsx')]})
+          for asset in inv['assets']:
+              if asset['asset_id']=='home-hero-organic-svg':
+                  asset['status']='preserved approved source; not loaded by default'
+                  asset['optimized_path']=str(target)
+          inv['version']='1.6';invpath.write_text(json.dumps(inv,ensure_ascii=False,indent=2)+'\n')
+          mp=pathlib.Path('code/src/content/ProductStructure.json'); m=json.loads(mp.read_text())
+          for aid,rel,page,source in items:
+              next(p for p in m['pages'] if p['id']==page)['assets'].append(aid)
+          mp.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
+          (root/'about-author/profile/README.md').write_text('# Official author portrait\n\nExact JPEG and WebP copied from LCR Portfolio at 4e2941bdc55c29349a012c682a6ccb228fc06a09. WebP is used on About Author only. Original preserved. See AssetInventory.\n')
+          with (root/'home/hero/README.md').open('a') as f:
+              f.write('\nOrganic WebP is now the first-load derivative of the approved SVG. '+json.dumps(metrics)+'\n')
+          pathlib.Path('documentation/HeroPerformance.json').write_text(json.dumps(metrics,indent=2)+'\n')
+          PY
+          cd code
+          node scripts/ValidateStructure.mjs
+      - name: Measure browser decode before and after
+        working-directory: code
+        shell: bash
+        run: |
+          cat > MeasureHero.mjs <<'EOF'
+          import {chromium} from '@playwright/test';
+          import fs from 'node:fs';
+          const browser=await chromium.launch();
+          try {
+           const page=await browser.newPage();
+           const results={};
+           for(const [name,mime,file] of [['svg','image/svg+xml','HumanDecisionMakingHero.svg'],['webp','image/webp','HumanDecisionMakingHeroOrganic.webp']]){
+            const encoded=fs.readFileSync('public/assets/home/hero/'+file).toString('base64');
+            results[name]=await page.evaluate(async ({mime,encoded})=>{
+             const bytes=Uint8Array.from(atob(encoded),c=>c.charCodeAt(0));
+             const samples=[];
+             for(let i=0;i<7;i++){
+              const url=URL.createObjectURL(new Blob([bytes],{type:mime}));const img=new Image();
+              const start=performance.now();img.src=url;await img.decode();
+              const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext('2d').drawImage(img,0,0);
+              samples.push(performance.now()-start);URL.revokeObjectURL(url);
+             }
+             return {samples_ms:samples,median_ms:samples.sort((a,b)=>a-b)[3]};
+            },{mime,encoded});
+           }
+           console.log('HERO_DECODE',JSON.stringify(results));
+           const path='../documentation/HeroPerformance.json';const metrics=JSON.parse(fs.readFileSync(path,'utf8'));metrics.decode_and_draw=results;metrics.method='Chromium local Blob, seven samples each; excludes network, not end-to-end load time';
+           fs.writeFileSync(path,JSON.stringify(metrics,null,2)+'\n');fs.writeFileSync('/tmp/author-hero-evidence/HeroMetrics.json',JSON.stringify(metrics,null,2)+'\n');
+          }finally{await browser.close()}
+          EOF
+          node MeasureHero.mjs
+          rm MeasureHero.mjs
+      - name: Commit assets to development branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add code/public/assets code/src/content/ProductStructure.json documentation/AssetInventory.json documentation/HeroPerformance.json
+          git commit -m "assets: preserve official portrait and optimize approved transparent Hero"
+          git push origin HEAD:fix/home-layout-author-performance
+      - uses: actions/upload-artifact@v4
+        with:
+          name: author-hero-optimization
+          path: /tmp/author-hero-evidence
