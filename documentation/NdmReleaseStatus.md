@@ -17,3 +17,4 @@ Organic Home Hero: exact Drawer SVG is now the active image; PNG and WebP predec
 Home viewport hotfix: removed research laboratory eyebrow; cards share a two-column row at approximately half previous width, maintaining 56/44 image/text desktop split and mobile image-above-copy. Home viewport shell measures its available content height and scales only if needed, with an accessibility escape for extreme/zoomed viewports. Other routes remain scrollable. No asset changes.
 
 Short mobile landscape uses a compact image-first card layout to preserve readable copy without triggering overflow (568 × 320).
+Author interactive portfolio release: compact author profile, independent reusable 1440 × 810 iframe with external action, stacked Home cards, natural scroll on compact devices, light footer, optimized transparent Hero derivative. Assets and performance evidence registered separately by controlled preparation workflow.
