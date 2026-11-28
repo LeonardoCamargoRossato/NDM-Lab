@@ -76,3 +76,6 @@ footer a{color:#234d70}
 .app-preview-mobile-action{display:none}
 @media(max-width:800px){.author-experience{grid-template-columns:minmax(0,1fr);gap:20px}.author-profile-photo{width:145px}.inner-main:has(>.author-experience){padding:1.4rem 0}.app-preview-open{display:none}.app-preview-mobile-action{display:block;text-align:center;padding:.65rem;font-weight:700}}
 @media(hover:none){.app-preview-open{display:none}.app-preview-mobile-action{display:block;text-align:center;padding:.65rem;font-weight:700}}
+
+/* Match the left content to the image height, without shrinking text globally. */
+@media(min-width:801px){.home-app .hero-visual{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-start}.home-app .decision-hero{width:100%;height:auto}.home-app .hero-copy{padding-bottom:38px}.home-app .hero-actions .primary{margin-top:auto}}
