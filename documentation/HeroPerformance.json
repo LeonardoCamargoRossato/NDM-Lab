@@ -1,0 +1,39 @@
+{
+  "original_bytes": 3352667,
+  "optimized_bytes": 338670,
+  "reduction_percent": 89.9,
+  "quality": 82,
+  "dimensions": [
+    1448,
+    1086
+  ],
+  "alpha_exact": true,
+  "visible_rgb_rmse": 4.393,
+  "decode_and_draw": {
+    "svg": {
+      "samples_ms": [
+        73,
+        74.39999999996508,
+        74.70000000001164,
+        75.09999999997672,
+        80.5,
+        82.59999999997672,
+        88
+      ],
+      "median_ms": 75.09999999997672
+    },
+    "webp": {
+      "samples_ms": [
+        38.59999999997672,
+        72.79999999998836,
+        73.09999999997672,
+        73.10000000003492,
+        73.40000000002328,
+        73.79999999998836,
+        76
+      ],
+      "median_ms": 73.10000000003492
+    }
+  },
+  "method": "Chromium local Blob, seven samples each; excludes network, not end-to-end load time"
+}
