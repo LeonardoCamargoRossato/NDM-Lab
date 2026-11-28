@@ -46,3 +46,16 @@ test('official portrait is exact and organic WebP is optimized',()=>{
  const hero=fs.readFileSync('public/assets/home/hero/HumanDecisionMakingHeroOrganic.webp');
  assert.ok(hero.length<=350000);assert.equal(hero.toString('ascii',8,12),'WEBP');
 });
+
+test('public speaking gallery retains exact source order and all twenty verified variants',()=>{
+ const content=JSON.parse(fs.readFileSync('src/content/AuthorContent.json','utf8'));
+ assert.deepEqual(content.gallery.map(x=>x.photoNumber),[9,11,8,12,1,2,3,4,5,6]);
+ assert.ok(content.gallery.every(x=>x.visible));assert.equal(content.about.pt.bio.length,8);assert.equal(content.about.en.bio.length,8);
+ for(const item of content.gallery)for(const key of ['card','full']){
+  const path='code/public/'+item.media[key];const asset=inventory.assets.find(x=>x.path===path);
+  assert.ok(asset,path);assert.equal(asset.editorial_id,item.id);assert.equal(asset.sort_order,item.sortOrder);
+  const data=fs.readFileSync('../'+path);assert.equal(createHash('sha256').update(data).digest('hex'),asset.sha256);
+ }
+ assert.equal(fs.readdirSync('public/assets/about-author/speaking-gallery/webp').length,10);
+ assert.equal(fs.readdirSync('public/assets/about-author/speaking-gallery/png').length,10);
+});

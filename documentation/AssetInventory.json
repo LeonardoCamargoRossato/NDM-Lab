@@ -1,5 +1,5 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "assets": [
     {
       "asset_id": "ita-institutional-logo",
@@ -906,6 +906,526 @@
       "references": [
         "code/src/lib/Assets.ts",
         "code/src/pages/home/HomePage.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-09-webp",
+      "description": "Porto Alegre - RS | Tech Now 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking09.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571862628-119f0928-a93e-46ed-a09a-901f977f60a8-palestrando-9.webp",
+      "source_original": "assets/about/gallery/originals/1789571862628-119f0928-a93e-46ed-a09a-901f977f60a8-palestrando-9.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "01063bb25520809e456f505dd8b036d68f6275ba",
+      "sha256": "31b2d74fc4bc83259e8c9ad4097a8917558f297e534a8def19b8857f6040d1d0",
+      "size_bytes": 375000,
+      "dimensions": "3000 × 2000",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "74b859f4-fed5-4572-8bad-fa36fa15c5ac",
+      "photo_number": 9,
+      "sort_order": 1,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-09-png",
+      "description": "Porto Alegre - RS | Tech Now 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking09.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571862628-119f0928-a93e-46ed-a09a-901f977f60a8-palestrando-9.png",
+      "source_original": "assets/about/gallery/originals/1789571862628-119f0928-a93e-46ed-a09a-901f977f60a8-palestrando-9.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "81fee23abb1af949108c7b06984380fd5ae74e11",
+      "sha256": "b2367b07f39b4abf7303c6cf4fa7961737de08a194b6429594affea198852749",
+      "size_bytes": 6587088,
+      "dimensions": "3000 × 2000",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "74b859f4-fed5-4572-8bad-fa36fa15c5ac",
+      "photo_number": 9,
+      "sort_order": 1,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-11-webp",
+      "description": "Porto Alegre - RS | South Summit 2026",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking11.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571889074-8ba328b3-a6f4-4252-a9f9-c6d90be3eb80-palestrando-11.webp",
+      "source_original": "assets/about/gallery/originals/1789571889074-8ba328b3-a6f4-4252-a9f9-c6d90be3eb80-palestrando-11.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "cd04b996cb3dbc2b9db40752b9bcf9931ebbf95b",
+      "sha256": "cbb3982dea7c221d9eacff9f5f3e60f332ebe8fcbbccfc047a00704f0d1c28e5",
+      "size_bytes": 166004,
+      "dimensions": "1080 × 1920",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "b4186111-09aa-48b1-b4d9-ad8fcef4eb65",
+      "photo_number": 11,
+      "sort_order": 2,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-11-png",
+      "description": "Porto Alegre - RS | South Summit 2026",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking11.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571889074-8ba328b3-a6f4-4252-a9f9-c6d90be3eb80-palestrando-11.png",
+      "source_original": "assets/about/gallery/originals/1789571889074-8ba328b3-a6f4-4252-a9f9-c6d90be3eb80-palestrando-11.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "2ea75c31c635a8d3fd2e9344f364cf65adeb30bf",
+      "sha256": "93b5ca1031952d82263b44ec322c6f1d0174ad321c8bf02df0f977764623fc05",
+      "size_bytes": 2187860,
+      "dimensions": "1080 × 1920",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "b4186111-09aa-48b1-b4d9-ad8fcef4eb65",
+      "photo_number": 11,
+      "sort_order": 2,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-08-webp",
+      "description": "São Paulo - SP | ALESP - 2025 (Assembleia Legislativa do Estado de São Paulo)",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking08.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571852749-67a24381-2bc4-4381-9cf4-08c3f43f4fe1-palestrando-8.webp",
+      "source_original": "assets/about/gallery/originals/1789571852749-67a24381-2bc4-4381-9cf4-08c3f43f4fe1-palestrando-8.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "721bbbd938c579ad451abbd26939e494adb03ff8",
+      "sha256": "1b0476acfd287d7550d2643f581bd224ba7d30a528c7edba158a8eff3b252806",
+      "size_bytes": 529950,
+      "dimensions": "3024 × 4032",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "0bdee20b-f1d5-4c58-9e7c-5b3c9d743d06",
+      "photo_number": 8,
+      "sort_order": 3,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-08-png",
+      "description": "São Paulo - SP | ALESP - 2025 (Assembleia Legislativa do Estado de São Paulo)",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking08.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571852749-67a24381-2bc4-4381-9cf4-08c3f43f4fe1-palestrando-8.png",
+      "source_original": "assets/about/gallery/originals/1789571852749-67a24381-2bc4-4381-9cf4-08c3f43f4fe1-palestrando-8.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "fcb8713bce1098e4db43a5d816d4d3e4915fdf71",
+      "sha256": "25339ff0c3c2d2869bbda66cfe9090fc4231eb4fd748832f51eb7676b295bc5a",
+      "size_bytes": 8429789,
+      "dimensions": "3024 × 4032",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "0bdee20b-f1d5-4c58-9e7c-5b3c9d743d06",
+      "photo_number": 8,
+      "sort_order": 3,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-12-webp",
+      "description": "São Paulo - SP | AUTOCOM Summit 2026",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking12.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789572227151-8edb333c-c1f5-4b06-9d90-acf0b2bfbb2b-palestrando-12.webp",
+      "source_original": "assets/about/gallery/originals/1789572227151-8edb333c-c1f5-4b06-9d90-acf0b2bfbb2b-palestrando-12.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "8b9d6acce91fa584ffd6f0c1a7b0c54f64a6d7e3",
+      "sha256": "62c06bd59570196664fec90b791cb4bde26453795e9d0e347adacb5b015e46bd",
+      "size_bytes": 126450,
+      "dimensions": "1600 × 1063",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "37b7b020-dbc1-4c04-bd7b-c014a7afe863",
+      "photo_number": 12,
+      "sort_order": 4,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-12-png",
+      "description": "São Paulo - SP | AUTOCOM Summit 2026",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking12.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789572227151-8edb333c-c1f5-4b06-9d90-acf0b2bfbb2b-palestrando-12.png",
+      "source_original": "assets/about/gallery/originals/1789572227151-8edb333c-c1f5-4b06-9d90-acf0b2bfbb2b-palestrando-12.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "2aaaed0175aeb0df586e5ce2b4014162e4f5f37e",
+      "sha256": "b7be1d8fe6d0ac1774b47bc587ee1556aac09a7f26f709098faeb48b1a6674f4",
+      "size_bytes": 1632512,
+      "dimensions": "1600 × 1063",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "37b7b020-dbc1-4c04-bd7b-c014a7afe863",
+      "photo_number": 12,
+      "sort_order": 4,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-01-webp",
+      "description": "Natal - RN | Congresso Internacional de Matéria Condensada 2023",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking01.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571785798-b6287f6d-cc44-4bd3-8783-ca2fbdf2930b-palestrando-1.webp",
+      "source_original": "assets/about/gallery/originals/1789571785798-b6287f6d-cc44-4bd3-8783-ca2fbdf2930b-palestrando-1.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "ebc15d60921656347cf4a1da752f2621d8c94731",
+      "sha256": "762f1908f205e04da093b0615d2461419b3f0470f8b996d542858df3cdd257a3",
+      "size_bytes": 63824,
+      "dimensions": "1280 × 577",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "150121e0-7ab6-4f9f-b56a-779f6a45b956",
+      "photo_number": 1,
+      "sort_order": 5,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-01-png",
+      "description": "Natal - RN | Congresso Internacional de Matéria Condensada 2023",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking01.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571785798-b6287f6d-cc44-4bd3-8783-ca2fbdf2930b-palestrando-1.png",
+      "source_original": "assets/about/gallery/originals/1789571785798-b6287f6d-cc44-4bd3-8783-ca2fbdf2930b-palestrando-1.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "e752ae1645b27a66033dcbe43d40d2bb8e23a760",
+      "sha256": "debd9f4d9b725efc03e168fb1b21bcbb7efb5b2ecf349bf24b936fd02fcc4635",
+      "size_bytes": 703366,
+      "dimensions": "1280 × 577",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "150121e0-7ab6-4f9f-b56a-779f6a45b956",
+      "photo_number": 1,
+      "sort_order": 5,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-02-webp",
+      "description": "Curitiba - Paraná | Congresso de Econofísica e Sistemas Complexos 2023",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking02.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571793547-0cefe15d-dff1-4d14-83da-d2cee9bc3f96-palestrando-2.webp",
+      "source_original": "assets/about/gallery/originals/1789571793547-0cefe15d-dff1-4d14-83da-d2cee9bc3f96-palestrando-2.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "5cdfd39386d3e1800920c21923715bbcba916466",
+      "sha256": "169f3a499f8cd6e321df4196d4a80e9342c1ccdbd6590712c08b0f3839f89079",
+      "size_bytes": 457190,
+      "dimensions": "4032 × 3024",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "f99f6d5e-a03b-4375-bdf1-4082680555cf",
+      "photo_number": 2,
+      "sort_order": 6,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-02-png",
+      "description": "Curitiba - Paraná | Congresso de Econofísica e Sistemas Complexos 2023",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking02.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571793547-0cefe15d-dff1-4d14-83da-d2cee9bc3f96-palestrando-2.png",
+      "source_original": "assets/about/gallery/originals/1789571793547-0cefe15d-dff1-4d14-83da-d2cee9bc3f96-palestrando-2.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "cfb4f084c7a2b8e162951c7c54768321fd8793f2",
+      "sha256": "8d3187fb30f0fd8581312a728f59bd51ef3ddadf020123254289f1771aabc481",
+      "size_bytes": 7740220,
+      "dimensions": "4032 × 3024",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "f99f6d5e-a03b-4375-bdf1-4082680555cf",
+      "photo_number": 2,
+      "sort_order": 6,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-03-webp",
+      "description": "São Paulo - SP | MVComp 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking03.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571801186-0f09a16d-f380-455d-bfcd-8d26548bb286-palestrando-3.webp",
+      "source_original": "assets/about/gallery/originals/1789571801186-0f09a16d-f380-455d-bfcd-8d26548bb286-palestrando-3.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "ddcf4e76992fda6f68e448bdfa4b890b51caca02",
+      "sha256": "f47a9c86b3a021e260d3970a158ebe7cb2ce9fd8694301879abf70ec91047a41",
+      "size_bytes": 1000500,
+      "dimensions": "4032 × 3024",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "0a16c827-14e3-4ad6-8303-f8410ed7f652",
+      "photo_number": 3,
+      "sort_order": 7,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-03-png",
+      "description": "São Paulo - SP | MVComp 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking03.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571801186-0f09a16d-f380-455d-bfcd-8d26548bb286-palestrando-3.png",
+      "source_original": "assets/about/gallery/originals/1789571801186-0f09a16d-f380-455d-bfcd-8d26548bb286-palestrando-3.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "bd2ef5a2f6aa35e02dba63e9457859e9e93dcd1e",
+      "sha256": "eac28ebad4e2454eab1ea05cf9cc49cfd3999a7f999b78bdf5b917c91230ad39",
+      "size_bytes": 12221132,
+      "dimensions": "4032 × 3024",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "0a16c827-14e3-4ad6-8303-f8410ed7f652",
+      "photo_number": 3,
+      "sort_order": 7,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-04-webp",
+      "description": "Porto Alegre - RS | Inauguração da LACQ (Liga Acadêmica de Computação Quântica) na PUCRS — Tecnopuc 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking04.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571811030-2945a4f7-87e0-4535-9841-4cfde152eceb-palestrando-4.webp",
+      "source_original": "assets/about/gallery/originals/1789571811030-2945a4f7-87e0-4535-9841-4cfde152eceb-palestrando-4.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "672d37de010c935302ca7aa3d88b4a55e78b2746",
+      "sha256": "24e56cf798b897496b43ea111a658ab1be696cc1cf2072aa3ba211f2b2517f81",
+      "size_bytes": 229256,
+      "dimensions": "1280 × 960",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "72297bc3-2530-4f46-96f6-1348704ca148",
+      "photo_number": 4,
+      "sort_order": 8,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-04-png",
+      "description": "Porto Alegre - RS | Inauguração da LACQ (Liga Acadêmica de Computação Quântica) na PUCRS — Tecnopuc 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking04.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571811030-2945a4f7-87e0-4535-9841-4cfde152eceb-palestrando-4.png",
+      "source_original": "assets/about/gallery/originals/1789571811030-2945a4f7-87e0-4535-9841-4cfde152eceb-palestrando-4.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "69422d69a82303ce2fc627809361879418bae977",
+      "sha256": "8cf626551089caefbedf90e9a40f16966791dbd807e3a95e658cc45fd72dcc01",
+      "size_bytes": 2014745,
+      "dimensions": "1280 × 960",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "72297bc3-2530-4f46-96f6-1348704ca148",
+      "photo_number": 4,
+      "sort_order": 8,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-05-webp",
+      "description": "Porto Alegre - RS | Primeira Semana de Computação Quântica da UFRGS 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking05.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571818244-4b919e6a-9188-4b40-a58b-2a669be3c183-palestrando-5.webp",
+      "source_original": "assets/about/gallery/originals/1789571818244-4b919e6a-9188-4b40-a58b-2a669be3c183-palestrando-5.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "c6dfa4fcc30298d120632273f3fefa65ad2c075e",
+      "sha256": "7885433cbcc5e9c1d521bf30223831b3706540af767e4eaab7e1bb6fcaa81401",
+      "size_bytes": 463258,
+      "dimensions": "4032 × 3024",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "9963a7e2-550b-4435-9c14-d7289ad40d8a",
+      "photo_number": 5,
+      "sort_order": 9,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-05-png",
+      "description": "Porto Alegre - RS | Primeira Semana de Computação Quântica da UFRGS 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking05.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571818244-4b919e6a-9188-4b40-a58b-2a669be3c183-palestrando-5.png",
+      "source_original": "assets/about/gallery/originals/1789571818244-4b919e6a-9188-4b40-a58b-2a669be3c183-palestrando-5.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "5c4d41b90cdf503d2356c5199e3b22fddc364333",
+      "sha256": "2c9cce5a88da2e0c2692dcdff0a401a0d8596194fca85f471a625287f245298e",
+      "size_bytes": 8048444,
+      "dimensions": "4032 × 3024",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "9963a7e2-550b-4435-9c14-d7289ad40d8a",
+      "photo_number": 5,
+      "sort_order": 9,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-06-webp",
+      "description": "Foz do Iguaçu - PR | Latinoware 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/webp/Speaking06.webp",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/WebP/1789571828453-cfc3921b-7e7a-4d64-827c-f3d4d3782ce5-palestrando-6.webp",
+      "source_original": "assets/about/gallery/originals/1789571828453-cfc3921b-7e7a-4d64-827c-f3d4d3782ce5-palestrando-6.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "WEBP",
+      "git_blob_sha": "57e4a37d07ea3a9cd4b021750b62cc0566ece610",
+      "sha256": "e19733183e1201ee4a6286cb37daf6ec0251317fb88a9c1889f9cc54beff2214",
+      "size_bytes": 803420,
+      "dimensions": "4624 × 3468",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "e61f69c2-574f-43e1-9555-bf251c87c223",
+      "photo_number": 6,
+      "sort_order": 10,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
+      ]
+    },
+    {
+      "asset_id": "author-speaking-06-png",
+      "description": "Foz do Iguaçu - PR | Latinoware 2025",
+      "pages": [
+        "about-author"
+      ],
+      "path": "code/public/assets/about-author/speaking-gallery/png/Speaking06.png",
+      "source": "LCR Portfolio 4e2941bdc55c29349a012c682a6ccb228fc06a09:code/public/assets/about/gallery/PNG/1789571828453-cfc3921b-7e7a-4d64-827c-f3d4d3782ce5-palestrando-6.png",
+      "source_original": "assets/about/gallery/originals/1789571828453-cfc3921b-7e7a-4d64-827c-f3d4d3782ce5-palestrando-6.jpg",
+      "author": "Project owner / public speaking gallery",
+      "format": "PNG",
+      "git_blob_sha": "07b0995fe532d688eda0b978b03d5f7dc225103a",
+      "sha256": "5e3c2c13b6228a979375be6448cb66273692a684b29647a0a6798ba62e672e25",
+      "size_bytes": 15135381,
+      "dimensions": "4624 × 3468",
+      "rights": "Project owner authorized reuse of public gallery",
+      "access": "public",
+      "status": "integrated",
+      "editorial_id": "e61f69c2-574f-43e1-9555-bf251c87c223",
+      "photo_number": 6,
+      "sort_order": 10,
+      "references": [
+        "code/src/content/AuthorContent.json",
+        "code/src/pages/about-author/SpeakingGallery.tsx"
       ]
     }
   ],

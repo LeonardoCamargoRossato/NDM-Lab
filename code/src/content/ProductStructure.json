@@ -177,7 +177,27 @@
       "component": "pages/about-author/AuthorPage.tsx",
       "assets": [
         "author-profile-original",
-        "author-profile-webp"
+        "author-profile-webp",
+        "author-speaking-09-webp",
+        "author-speaking-09-png",
+        "author-speaking-11-webp",
+        "author-speaking-11-png",
+        "author-speaking-08-webp",
+        "author-speaking-08-png",
+        "author-speaking-12-webp",
+        "author-speaking-12-png",
+        "author-speaking-01-webp",
+        "author-speaking-01-png",
+        "author-speaking-02-webp",
+        "author-speaking-02-png",
+        "author-speaking-03-webp",
+        "author-speaking-03-png",
+        "author-speaking-04-webp",
+        "author-speaking-04-png",
+        "author-speaking-05-webp",
+        "author-speaking-05-png",
+        "author-speaking-06-webp",
+        "author-speaking-06-png"
       ],
       "status": "implemented"
     },
