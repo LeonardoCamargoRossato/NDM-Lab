@@ -1,0 +1,58 @@
+name: Verify actual portfolio embedding
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/VerifyAuthorPreview.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 584821390b7d098ad5ced10126e2d4c126da22c1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - working-directory: code
+        run: npm ci && npm run build && npx playwright install chromium
+      - name: Verify actual embedded portfolio
+        working-directory: code
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/ndm-preview.log 2>&1 &
+          mkdir -p test-results/live
+          cat > VerifyAuthor.mjs <<'EOF'
+          import {chromium} from '@playwright/test';
+          import assert from 'node:assert/strict';
+          const browser=await chromium.launch();
+          try{
+           const page=await browser.newPage({viewport:{width:1440,height:900}});
+           await page.goto('http://127.0.0.1:4173/NDM-Lab/#/sobre-o-autor');
+           const frame=page.frameLocator('.app-preview-stage iframe');
+           await frame.locator('.hero-v3').waitFor({state:'visible',timeout:45000});
+           await frame.locator('#projects').waitFor({state:'attached',timeout:20000});
+           await page.screenshot({path:'test-results/live/AuthorDesktop.png',fullPage:true});
+           await page.locator('.app-preview').hover();
+           await page.waitForTimeout(350);
+           await page.screenshot({path:'test-results/live/AuthorHover.png',fullPage:true});
+           await frame.locator('.hero-v3').evaluate(el=>el.ownerDocument.defaultView.scrollTo(0,700));
+           const scroll=await frame.locator('.hero-v3').evaluate(el=>el.ownerDocument.defaultView.scrollY);
+           assert.ok(scroll>0,'Real portfolio did not scroll');
+           await page.getByRole('button',{name:'Idioma'}).click();
+           await page.getByRole('button',{name:'EN-US'}).click();
+           await page.locator('.app-preview-open').focus();
+           await page.screenshot({path:'test-results/live/AuthorEnglish.png',fullPage:true});
+           await page.setViewportSize({width:390,height:844});
+           await page.locator('.app-preview-stage').scrollIntoViewIfNeeded();
+           await page.screenshot({path:'test-results/live/AuthorMobile.png',fullPage:true});
+           console.log('LIVE_PORTFOLIO_EMBED_OK',scroll);
+          }finally{await browser.close()}
+          EOF
+          node VerifyAuthor.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-portfolio-preview
+          path: code/test-results/live
