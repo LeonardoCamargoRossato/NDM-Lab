@@ -105,7 +105,7 @@ test('Home remains readable without clipping, allowing natural scroll on compact
   
   await expect(page.locator('.hero .eyebrow')).toHaveCount(0);
   await expect.poll(()=>page.evaluate(()=>{
-   const w=window.innerWidth,h=window.innerHeight,main=document.querySelector('.home-main').getBoundingClientRect();
+   const w=window.innerWidth,main=document.querySelector('.home-main').getBoundingClientRect();
    const visible=['.topbar','footer','.hero h1','.hero-subtitle','.lead','.research-card','.research-card img','.research-card-copy','.hero-actions .primary','.decision-hero','.rpd-link'].flatMap(selector=>[...document.querySelectorAll(selector)]).every(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0&&r.x>=-1&&r.y>=-1&&r.right<=w+1&&r.bottom<=document.documentElement.scrollHeight+1});
    const content=[...document.querySelectorAll('.hero h1,.hero-subtitle,.lead,.research-card,.hero-actions .primary,.decision-hero,.rpd-link')].every(el=>{const r=el.getBoundingClientRect();return r.top>=main.top-1&&r.bottom<=main.bottom+1&&r.left>=main.left-1&&r.right<=main.right+1});
    return {visible,content,scroll:document.documentElement.scrollWidth<=w+1};

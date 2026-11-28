@@ -26,6 +26,6 @@ test('author preview geometry, independent action, locale and route isolation',a
  const popupPromise=page.waitForEvent('popup');await action.click();const popup=await popupPromise;await popup.waitForLoadState();expect(popup.url()).toContain(portfolio);await popup.close();
  await page.getByRole('button',{name:'Idioma'}).click();await page.getByRole('button',{name:'EN-US'}).click();
  await expect(page.getByRole('link',{name:/Open App/}).filter({visible:true})).toBeVisible();
- expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
  await page.getByRole('link',{name:'Home',exact:true}).click();await expect(page.locator('iframe')).toHaveCount(0);
 });
