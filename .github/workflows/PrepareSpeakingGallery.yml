@@ -1,0 +1,59 @@
+name: Import approved public speaking gallery
+on:
+  push:
+    branches: [chore/ndm-asset-package]
+    paths: ['.github/workflows/PrepareSpeakingGallery.yml']
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/about-author-portfolio-gallery
+          fetch-depth: 0
+      - name: Copy and verify only public photographs
+        run: |
+          test "$(git rev-parse HEAD)" = "269d47f3f9d2e2c959699ffb4e72f9915b820fd8"
+          git clone --quiet --filter=blob:none --no-checkout https://github.com/LeonardoCamargoRossato/LCR-SolutionsArchitecture-IA-Quantum.git /tmp/portfolio
+          python -m pip install --quiet Pillow==11.3.0
+          python - <<'PY'
+          import pathlib,json,hashlib,subprocess
+          from PIL import Image
+          src='4e2941bdc55c29349a012c682a6ccb228fc06a09'
+          cat=json.loads(pathlib.Path('code/src/content/AuthorContent.json').read_text())
+          invpath=pathlib.Path('documentation/AssetInventory.json'); inv=json.loads(invpath.read_text())
+          mp=pathlib.Path('code/src/content/ProductStructure.json'); mapping=json.loads(mp.read_text()); page=next(p for p in mapping['pages'] if p['id']=='about-author')
+          assert [i['photoNumber'] for i in cat['gallery']]==[9,11,8,12,1,2,3,4,5,6]
+          for item in cat['gallery']:
+              assert item['visible'] and item['photoNumber'] not in [7,10]
+              for variant,fmt in [('card','WebP'),('full','PNG')]:
+                  rel=item['media'][variant]; dest=pathlib.Path('code/public')/rel
+                  origin='code/public/assets/about/gallery/'+fmt+'/'+dest.name
+                  data=subprocess.check_output(['git','-C','/tmp/portfolio','show',src+':'+origin])
+                  dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(data)
+                  blob=subprocess.check_output(['git','-C','/tmp/portfolio','rev-parse',src+':'+origin],text=True).strip()
+                  assert hashlib.sha1(('blob '+str(len(data))+'\0').encode()+data).hexdigest()==blob
+                  with Image.open(dest) as im:
+                      dims=f'{im.width} × {im.height}';im.verify()
+                  aid=f"author-speaking-{item['photoNumber']:02d}-{fmt.lower()}"
+                  assert not any(a['asset_id']==aid for a in inv['assets'])
+                  inv['assets'].append({'asset_id':aid,'description':item['titlePt'],'pages':['about-author'],'path':str(dest),'source':'LCR Portfolio '+src+':'+origin,'source_original':item['media']['original'],'author':'Project owner / public speaking gallery','format':fmt.upper(),'git_blob_sha':blob,'sha256':hashlib.sha256(data).hexdigest(),'size_bytes':len(data),'dimensions':dims,'rights':'Project owner authorized reuse of public gallery','access':'public','status':'integrated','editorial_id':item['id'],'photo_number':item['photoNumber'],'sort_order':item['sortOrder'],'references':['code/src/content/AuthorContent.json','code/src/pages/about-author/SpeakingGallery.tsx']})
+                  page['assets'].append(aid)
+          inv['version']='1.7';invpath.write_text(json.dumps(inv,ensure_ascii=False,indent=2)+'\n')
+          mp.write_text(json.dumps(mapping,ensure_ascii=False,indent=2)+'\n')
+          root=pathlib.Path('code/public/assets/about-author/speaking-gallery')
+          (root/'README.md').write_text('# Speaking gallery\n\nTen public photographs copied byte-for-byte from LCR Portfolio commit '+src+'. WebP previews and PNG originals for viewing/download only. Source JPGs stay in the original repository. Hidden photographs 7 and 10 are not copied. Editorial metadata is in AuthorContent.json; hashes and dimensions in AssetInventory.json.\n')
+          print('VERIFIED 20 public gallery variants; hidden assets excluded')
+          PY
+          cd code
+          node scripts/ValidateStructure.mjs
+      - name: Commit verified assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add code/public/assets/about-author/speaking-gallery code/src/content/ProductStructure.json documentation/AssetInventory.json
+          git commit -m "assets: import ten approved public speaking photos with verified variants"
+          git push origin HEAD:feat/about-author-portfolio-gallery
